@@ -1,3 +1,6 @@
+import inMemoryJWTManager from './inMemoryJwt';
+
+
 const authProvider = {
 	login: async ({ username, password }) => {
 		const request = new Request('http://localhost:8080/api/auth/login', {
@@ -13,21 +16,28 @@ const authProvider = {
 				return response.json();
 			})
 			.then(({ token }) => {
+				inMemoryJWTManager.setToken(token);
 				localStorage.setItem('token', token);
 			});
 	},
 	checkAuth: () => {
-		// Required for the authentication to work
-		return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
+		return inMemoryJWTManager.getToken() ? Promise.resolve() : Promise.reject();
+	},
+	checkError: (error) => {
+		const status = error.status;
+		if (status === 401 || status === 403) {
+			inMemoryJWTManager.ereaseToken();
+			return Promise.reject();
+		}
+		return Promise.resolve();
 	},
 	logout: () => {
+		inMemoryJWTManager.ereaseToken();
 		localStorage.removeItem('token');
-		localStorage.removeItem('permissions');
 		return Promise.resolve();
 	},
 	getPermissions: () => {
-		// Required for the authentication to work
-		return Promise.resolve();
+		return inMemoryJWTManager.getToken() ? Promise.resolve() : Promise.reject();
 	},
 };
   
