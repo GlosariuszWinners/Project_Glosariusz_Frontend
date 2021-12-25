@@ -9497,6 +9497,21 @@ ra-core@^3.19.5:
     query-string "^5.1.1"
     reselect "~3.0.0"
 
+ra-data-json-server@^3.19.5:
+  version "3.19.5"
+  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-3.19.5.tgz#86b778aab57e8fcfd7a5a71573c4decb405fd0f9"
+  integrity sha512-b1AOGz1EoMYuFjTNWjQmedysWo7QAWNmkUjY8UTNPzXffm/UdamH+JIbKufxz0SQefKdyHDXXEPyMHE/f1K/wA==
+  dependencies:
+    query-string "^5.1.1"
+    ra-core "^3.19.5"
+
+ra-data-simple-rest@^3.19.5:
+  version "3.19.5"
+  resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-3.19.5.tgz#1b1158155107225e9137fee0c8555b5b24fbfd72"
+  integrity sha512-AeYrurh/m7xUEwq0kjxPkUiuT/KlZD0u9Eu20Jco8xu7x40FTbU60pLNS7WVOISLAjS3NydVJv89bPRh+ed0HQ==
+  dependencies:
+    query-string "^5.1.1"
+
 ra-i18n-polyglot@^3.19.5:
   version "3.19.5"
   resolved "https://registry.yarnpkg.com/ra-i18n-polyglot/-/ra-i18n-polyglot-3.19.5.tgz#55bb0109c3c90443557cd11aa994556f5b3ce9f3"
@@ -9504,6 +9519,11 @@ ra-i18n-polyglot@^3.19.5:
   dependencies:
     node-polyglot "^2.2.2"
     ra-core "^3.19.5"
+
+ra-in-memory-jwt@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ra-in-memory-jwt/-/ra-in-memory-jwt-1.0.0.tgz#e30d44ee13ea2c6dc673945ee07b38ca39e9d7cf"
+  integrity sha512-nj4oVwkm3rVZk3h5SRTrBsmNOv4v6BimCAI0u5qf5Z43BiXfnLDfC9qaqchIxdUuYY00ymSDeHD8taPuzjQZtQ==
 
 ra-language-english@^3.19.5:
   version "3.19.5"

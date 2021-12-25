@@ -1,17 +1,19 @@
-import { Admin, Resource, ListGuesser } from 'react-admin';
-import authProvider from './utils/authProvider';
-import jsonServerProvider from 'ra-data-json-server';
-import dotenv from 'dotenv';
+import { Admin, Resource } from 'react-admin';
+import authProvider from './words/utils/authProvider';
 import { BrowserRouter } from 'react-router-dom';
+import panelDataProvider from './words/utils/dataProvider';
+import { WordCreate, WordList } from '.';
 
-dotenv.config();
+
+
+const dataProvider = panelDataProvider('http://localhost:8080/api/panel');
 
 const Main = () => {
-	const dataProvider = jsonServerProvider('http://localhost:8080/api');
+	console.log(dataProvider);
 	return (
 		<BrowserRouter>
 			<Admin authProvider={authProvider} dataProvider={dataProvider}>
-				<Resource name="words" list={ListGuesser}/>
+				<Resource name="words" list={WordList} create={WordCreate}/>
 			</Admin>
 		</BrowserRouter>
 	);
