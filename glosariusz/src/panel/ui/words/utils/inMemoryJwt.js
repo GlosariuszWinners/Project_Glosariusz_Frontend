@@ -1,6 +1,12 @@
 const inMemoryJWTManager = () => {
 	let inMemoryJWT = null;
 
+	window.addEventListener('storage', (event) => {
+		if (event.key === 'ra-logout') {
+			inMemoryJWT = null;
+		}
+	});
+
 	const getToken = () => inMemoryJWT;
 
 	const setToken = (token) => {
@@ -10,6 +16,7 @@ const inMemoryJWTManager = () => {
 
 	const ereaseToken = () => {
 		inMemoryJWT = null;
+		window.localStorage.setItem('ra-logout', Date.now());
 		return true;
 	};
 

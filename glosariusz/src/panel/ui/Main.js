@@ -9,7 +9,6 @@ import { WordCreate, WordList } from '.';
 const dataProvider = panelDataProvider('http://localhost:8080/api/panel');
 
 const Main = () => {
-	console.log(dataProvider);
 	return (
 		<BrowserRouter>
 			<Admin authProvider={authProvider} dataProvider={dataProvider}>
