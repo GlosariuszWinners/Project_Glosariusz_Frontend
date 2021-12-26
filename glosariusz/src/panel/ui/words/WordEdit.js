@@ -1,9 +1,10 @@
-import { ArrayInput, BooleanInput, Create, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin'; 
+import { ArrayInput, BooleanInput, Edit, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin'; 
 
-const WordCreate = (props) => {
+const WordEdit = (props) => {
 	return (
-		<Create {...props} title='Add word to the dictionary'>
+		<Edit {...props} title='Edit existing word'>
 			<SimpleForm>
+				<TextInput disabled source='id'/>
 				<TextInput source='polishWord'/>
 				<ArrayInput source='synonyms'>
 					<SimpleFormIterator>
@@ -15,8 +16,8 @@ const WordCreate = (props) => {
 				<TextInput source='definition' multiline={true}/>
 				<BooleanInput label="Reference" source="reference" />
 			</SimpleForm>
-		</Create>
+		</Edit>
 	);
 };
 
-export default WordCreate;
+export default WordEdit;
