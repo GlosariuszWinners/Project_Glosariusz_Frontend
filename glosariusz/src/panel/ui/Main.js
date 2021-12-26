@@ -4,8 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import panelDataProvider from './words/utils/dataProvider';
 import { WordCreate, WordList, WordEdit } from '.';
 
-
-
 const dataProvider = panelDataProvider('http://localhost:8080/api/panel');
 
 const Main = () => {

@@ -4,8 +4,8 @@ const WordEdit = (props) => {
 	return (
 		<Edit {...props} title='Edit existing word'>
 			<SimpleForm>
-				<TextInput disabled source='id'/>
-				<TextInput source='polishWord'/>
+				<TextInput disabled source='id' required={true}/>
+				<TextInput source='polishWord' required={true}/>
 				<ArrayInput source='synonyms'>
 					<SimpleFormIterator>
 						<TextInput source='singularForm' label='Singular form'/>
@@ -13,7 +13,7 @@ const WordEdit = (props) => {
 						<TextInput source='pluralUncountable' label='Plural Uncountable Form'/>
 					</SimpleFormIterator>
 				</ArrayInput>
-				<TextInput source='definition' multiline={true}/>
+				<TextInput source='definition' multiline={true} required={true}/>
 				<BooleanInput label="Reference" source="reference" />
 			</SimpleForm>
 		</Edit>

@@ -4,7 +4,7 @@ const WordCreate = (props) => {
 	return (
 		<Create {...props} title='Add word to the dictionary'>
 			<SimpleForm>
-				<TextInput source='polishWord'/>
+				<TextInput source='polishWord' required={true}/>
 				<ArrayInput source='synonyms'>
 					<SimpleFormIterator>
 						<TextInput source='singularForm' label='Singular form'/>
@@ -12,7 +12,7 @@ const WordCreate = (props) => {
 						<TextInput source='pluralUncountable' label='Plural Uncountable Form'/>
 					</SimpleFormIterator>
 				</ArrayInput>
-				<TextInput source='definition' multiline={true}/>
+				<TextInput source='definition' multiline={true} required={true}/>
 				<BooleanInput label="Reference" source="reference" />
 			</SimpleForm>
 		</Create>
