@@ -28,19 +28,18 @@ const authProvider = {
 		return Promise.resolve();
 	},
 	logout: async () => {
-		// const request = new Request('http://localhost:8080/api/auth/logout', {
-		// 	method: 'GET',
-		// 	credentials: 'include',
-		// });
-		// return fetch(request)
-		// 	.then((response) => {
-		// 		if (response.status < 200 || response.status >= 300) {
-		// 			throw new Error(response.statusText);
-		// 		}
-		// 		localStorage.removeItem('authenticated');
-		// 	});
-		localStorage.removeItem('authenticated');
-		return Promise.resolve();
+		const request = new Request('http://localhost:8080/api/auth/logout', {
+			method: 'GET',
+			credentials: 'include',
+		});
+		fetch(request)
+			.then((response) => {
+				if (response.status < 200 || response.status >= 300) {
+					throw new Error(response.statusText);
+				}
+				localStorage.removeItem('authenticated');
+				return Promise.resolve();
+			});
 	},
 	getPermissions: () => {
 		return localStorage.getItem('authenticated') ? Promise.resolve() : Promise.reject();

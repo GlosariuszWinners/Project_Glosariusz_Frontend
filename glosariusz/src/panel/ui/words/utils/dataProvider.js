@@ -9,10 +9,6 @@ export default (apiUrl) => {
 			method,
 			body: params?.data ? JSON.stringify(params.data) : null
 		};
-		// const token = inMemoryJWTManager.getToken();
-		// if (token) {
-		// 	options.headers.set('Authorization', `Bearer ${token}`);
-		// }
 		options.credentials = 'include';
 		return fetchUtils.fetchJson(url, options);
 	};
@@ -20,25 +16,19 @@ export default (apiUrl) => {
 		getList: async (resource, params) => {
 			const { page, perPage } = params.pagination;
 			const { field, order } = params.sort;
-			const query = {
-				...fetchUtils.flattenObject(params.filter),
-				_sort: field,
-				_order: order,
-				_start: (page - 1) * perPage,
-				_end: page * perPage,
-			};
-			const url = `${apiUrl}/${resource}?${stringify(query)}`;
+
+			const url = `${apiUrl}/${resource}?sort=${field}&order=${order}&page=${page}&limit=${perPage}&${stringify(params.filter)}`;
 
 			const { headers, json } = await httpClient(url, 'GET');
 			return {
-				data: json,
+				data: json.data,
 				total: parseInt(headers.get('x-total-count').split('/').pop(), 10),
 			};
 		},
 		getOne: async (resource, params) =>{
 			const { json } = await httpClient(`${apiUrl}/${resource}/${params.id}`, 'GET');
 			return ({
-				data: json,
+				data: json.data,
 			});
 		},
 		getMany: () => Promise.reject(),
@@ -46,7 +36,7 @@ export default (apiUrl) => {
 		update: async (resource, params) => {
 			const { json } = await httpClient(`${apiUrl}/${resource}/${params.id}`, 'PUT', params);
 			return ({
-				data: json,
+				data: json.data,
 			});
 		},
 		updateMany: async (resource, params) => {
@@ -56,7 +46,7 @@ export default (apiUrl) => {
 		create: async (resource, params) => {
 			const { json } = await httpClient(`${apiUrl}/${resource}`, 'POST', params);
 			return ({
-				data: json,
+				data: json.data,
 			});
 		},
 		delete: async (resource, params) => {
