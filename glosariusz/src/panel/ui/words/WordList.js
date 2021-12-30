@@ -1,5 +1,5 @@
-import { ArrayField, List, Datagrid, TextField, TextInput } from 'react-admin'; 
-import { WordShowButton, WordDeleteButton } from '..';
+import { ArrayField, Datagrid, List, TextField, TextInput } from 'react-admin';
+import { WordDeleteButton, WordEditButton } from '..';
 
 const wordFilters = [
 	<TextInput source="polishWord" placeholder='Enter polish word' label='Search polish word' alwaysOn key={1}/>,
@@ -8,7 +8,7 @@ const wordFilters = [
 const WordList = (props) => {
 	return (
 		<List {...props} title='List of all words in the dictionary' filters={wordFilters}>
-			<Datagrid rowClick="edit">
+			<Datagrid>
 				<TextField source='id'/>
 				<TextField source='polishWord'/>
 				<ArrayField source='synonyms'>
@@ -19,7 +19,7 @@ const WordList = (props) => {
 					</Datagrid>
 				</ArrayField>
 				<TextField source='definition'/>
-				<WordShowButton/>
+				<WordEditButton/>
 				<WordDeleteButton/>
 			</Datagrid>
 		</List>
