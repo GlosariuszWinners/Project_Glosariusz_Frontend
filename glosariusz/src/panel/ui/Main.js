@@ -3,7 +3,7 @@ import { WordCreate, WordEdit, WordList } from '.';
 import authProvider from './words/utils/authProvider';
 import panelDataProvider from './words/utils/dataProvider';
 
-const dataProvider = panelDataProvider('http://localhost:8080/api/panel');
+const dataProvider = panelDataProvider('http://localhost:8080/api');
 
 const Main = () => {
 	return (
