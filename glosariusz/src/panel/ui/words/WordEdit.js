@@ -1,4 +1,4 @@
-import { ArrayInput, BooleanInput, Edit, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin'; 
+import { ArrayInput, BooleanInput, Edit, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin';
 import validators from './utils/validators';
 
 const WordEdit = (props) => {

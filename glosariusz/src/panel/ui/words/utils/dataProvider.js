@@ -1,6 +1,6 @@
 import { stringify } from 'query-string';
-import inMemoryJWTManager from './inMemoryJwt';
 import { fetchUtils } from 'ra-core';
+// import inMemoryJWTManager from './inMemoryJwt';
 
 export default (apiUrl) => {
 	const httpClient = (url, method, params) => {
@@ -9,10 +9,11 @@ export default (apiUrl) => {
 			method,
 			body: params?.data ? JSON.stringify(params.data) : null
 		};
-		const token = inMemoryJWTManager.getToken();
-		if (token) {
-			options.headers.set('Authorization', `Bearer ${token}`);
-		}
+		// const token = inMemoryJWTManager.getToken();
+		// if (token) {
+		// 	options.headers.set('Authorization', `Bearer ${token}`);
+		// }
+		options.credentials = 'include';
 		return fetchUtils.fetchJson(url, options);
 	};
 	return {
