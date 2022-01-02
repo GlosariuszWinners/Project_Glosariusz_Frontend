@@ -9,7 +9,6 @@ const MainPage = () => {
 				<SearchBar/> 
 			</Box>
 		</div>
-		
 	);
 };
 export default MainPage;
