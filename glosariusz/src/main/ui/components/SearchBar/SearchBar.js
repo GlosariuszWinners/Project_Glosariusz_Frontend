@@ -3,7 +3,7 @@ import { Image, InputGroup } from '@chakra-ui/react';
 import searchIcon from './searchIcon.png';
 const SearchBar = () => {
 	return (
-		<InputGroup width="50vw" height="20vh">
+		<InputGroup width="50vw" height="20vh" justifySelf="center">
 			<InputRightElement
 				pointerEvents='none'
 				marginRight='15px' 
@@ -15,8 +15,12 @@ const SearchBar = () => {
 			<Input
 				placeholder={'Wpisz szukane słówko'}
 				bgColor="#fdfdfd"
+				color='#363636'
+				fontFamily="Ubuntu"
+				fontWeight="300"
 				border="none"
 				height={'20'}
+				paddingRight='-16'
 				borderRadius="2em"
 				p="0 30px"
 				fontSize='3xl'
