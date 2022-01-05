@@ -3,19 +3,19 @@ import validators from './utils/validators';
 
 const WordEdit = (props) => {
 	return (
-		<Edit {...props} title='Edit existing word'>
+		<Edit {...props} title='Edytuj istniejące słowo'>
 			<SimpleForm>
 				<TextInput disabled source='id'/>
-				<TextInput source='polishWord' validate={validators.validatePolishWord}/>
-				<ArrayInput source='synonyms'>
+				<TextInput source='polishWord' label='Polskie słowo' validate={validators.validatePolishWord}/>
+				<ArrayInput source='synonyms' label='Angielskie tłumaczenia'>
 					<SimpleFormIterator>
 						<TextInput source='singularForm' label='Singular form' validate={validators.validateSynonym}/>
-						<TextInput source='pluralCountable' label='Plural Countable Form' validate={validators.validateSynonym}/>
-						<TextInput source='pluralUncountable' label='Plural Uncountable Form' validate={validators.validateSynonym}/>
+						<TextInput source='pluralCountable' label='Forma mnoga policzalna' validate={validators.validateSynonym}/>
+						<TextInput source='pluralUncountable' label='Forma mnoga niepoliczalna' validate={validators.validateSynonym}/>
 					</SimpleFormIterator>
 				</ArrayInput>
-				<TextInput source='definition' multiline={true} validate={validators.validateDefinition}/>
-				<BooleanInput label="Reference" source="reference" />
+				<TextInput source='definition' label='Definicja' multiline={true} validate={validators.validateDefinition}/>
+				<BooleanInput source="reference" label='Referencja'/>
 			</SimpleForm>
 		</Edit>
 	);
