@@ -1,6 +1,6 @@
 import { Logo, SearchBar, Navbar } from '../..';
 import { Box } from '@chakra-ui/react';
-
+import { Pagination } from '../..';
 const MainPage = () => {
 	return (
 		<>
@@ -8,7 +8,8 @@ const MainPage = () => {
 			<div className='MainPage'>
 				<Box d="grid" justifyContent="center" backgroundColor={'#d0e8f2'}width='100vw'>
 					<Logo/>
-					<SearchBar/> 
+					<SearchBar/>
+					<Pagination/>
 				</Box>
 			</div>
 		</>
