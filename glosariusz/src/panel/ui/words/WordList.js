@@ -2,23 +2,23 @@ import { ArrayField, Datagrid, List, TextField, TextInput } from 'react-admin';
 import { WordDeleteButton, WordEditButton } from '..';
 
 const wordFilters = [
-	<TextInput source="polishWord" placeholder='Enter polish word' label='Search polish word' alwaysOn key={1}/>,
+	<TextInput source="polishWord" placeholder='Wpisz polskie słowo' label='Wyszukaj słowo' alwaysOn key={1}/>,
 ];
 
 const WordList = (props) => {
 	return (
-		<List {...props} title='List of all words in the dictionary' filters={wordFilters}>
+		<List {...props} title='Lista słówek dostępnych w słowniku' filters={wordFilters}>
 			<Datagrid>
 				<TextField source='id'/>
-				<TextField source='polishWord'/>
-				<ArrayField source='synonyms'>
+				<TextField source='polishWord' label='Polskie słowo'/>
+				<ArrayField source='synonyms' label='Angielskie tłumaczenia'>
 					<Datagrid>
-						<TextField source='singularForm'/>
-						<TextField source='pluralCountable'/>
-						<TextField source='pluralUncountable'/>
+						<TextField source='singularForm' label='Forma pojedyncza'/>
+						<TextField source='pluralCountable' label='Forma mnoga policzalna'/>
+						<TextField source='pluralUncountable' label='Forma mnoga niepoliczalna'/>
 					</Datagrid>
 				</ArrayField>
-				<TextField source='definition'/>
+				<TextField source='definition' label='Definicja'/>
 				<WordEditButton/>
 				<WordDeleteButton/>
 			</Datagrid>
