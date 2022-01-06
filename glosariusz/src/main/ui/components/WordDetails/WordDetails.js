@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Box, Center, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 
 // eslint-disable-next-line no-unused-vars
-const WordDetails = ({ handleBackToPagination, word }) => {
+const WordDetails = ({ word }) => {
 	return (
 		<div className='WordDetails'>
 			<Center>
@@ -13,7 +13,7 @@ const WordDetails = ({ handleBackToPagination, word }) => {
 							<GridItem><Text>Flag</Text></GridItem>
 							<GridItem>
 								<Text fontFamily={'Ubuntu'} fontSize={'25px'} fontWeight={700} letterSpacing={'-0.5px'} color={'#fdfdfd'}>
-									{word?.polishWord.toUpperCase()}
+									{word?.polishWord && word.polishWord.toUpperCase()}
 								</Text>
 							</GridItem>
 						</Grid>
@@ -25,12 +25,12 @@ const WordDetails = ({ handleBackToPagination, word }) => {
 									{index === 0 ? <GridItem><Center><Text>Flag</Text></Center></GridItem> : <GridItem></GridItem>}
 									<GridItem>
 										<Text fontFamily={'Ubuntu'} fontSize={'25px'} fontWeight={700} letterSpacing={'-0.5px'} color={'#fdfdfd'}>
-											{synonym?.singularForm.toUpperCase()}
+											{synonym?.singularForm && synonym.singularForm.toUpperCase()}
 										</Text>
 									</GridItem>
 									<GridItem>
 										<Text fontFamily={'Ubuntu'} fontSize={'25px'} fontWeight={700} letterSpacing={'-0.5px'} color={'#fdfdfd'}>
-											lm. {synonym?.pluralCountable.toUpperCase()}, {synonym?.pluralUncountable && synonym?.pluralUncountable.toUpperCase()}
+											{synonym?.pluralCountable || synonym?.pluralUncountable ? 'lm' : ''} {synonym?.pluralCountable && synonym.pluralCountable.toUpperCase()}{synonym?.pluralUncountable && `, ${synonym?.pluralUncountable.toUpperCase()}`}
 										</Text>
 									</GridItem>
 								</React.Fragment>
@@ -50,6 +50,6 @@ const WordDetails = ({ handleBackToPagination, word }) => {
 };
 
 WordDetails.propTypes = {
-	handleBackToPagination: PropTypes.func
+	word: PropTypes.object
 };
 export default WordDetails;

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { clearPaginationElements, getPaginationPage } from '../../../ducks/actions';
+import WordDetails from '../WordDetails/WordDetails';
 const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, apiCalls, clearPaginationElements }) => {
 	const [paginationLetter, setPaginationLetter] = useState('a');
 	useEffect(() => {
@@ -25,21 +26,18 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 	const handleLoadMore = () => {
 		getPaginationPage(nextPaginationUrl);
 	};
-	console.log('NextURL: ', nextPaginationUrl);
 	if (elemToShow){
 		return(
 			<div>
-				<div>Tutaj bedzie dymek przedstawiajacy element {elemToShow.polishWord}</div>
 				<button onClick={() => handleBackToPagination()}>Powrót do Listy</button>
+				<WordDetails word={elemToShow}/>
 			</div>
 		);
 	}
-	console.log(apiCalls.isLoading);
-	console.log(paginationElements);
 	return(
 		<div className="Pagination">
 			<Box m={'5', '20', '5', '20'}>
-				{polishAlphabeth.map(letter => <Button style={letter === paginationLetter ? { 'backgroundColor': '#f6ae2d' } : { 'backgroundColor': 'rgba(119, 203, 229, 0.2)' }} onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoading} key={letter}>{letter.toUpperCase()}</Button>)}
+				{polishAlphabeth.map(letter => <Button style={letter === paginationLetter ? { 'backgroundColor': '#f6ae2d' } : { 'backgroundColor': 'rgba(119, 203, 229, 0.2)' }} onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoading || letter === paginationLetter} key={letter}>{letter.toUpperCase()}</Button>)}
 				<Box bgColor={'#fdfdfd'} borderRadius={'50px'}>
 					<Center>
 						{!apiCalls.isLoading && paginationElements.length == 0 ? <Text>Brak słówek na literę <Text color={'#fdfdfd'} backgroundColor={'#f6ae2d'}><Center>{paginationLetter.toUpperCase()}</Center></Text></Text> : <></>}
@@ -51,7 +49,7 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 						{apiCalls.isLoading == true ? <Text fontSize={'md'} color={'gray.400'}>Trwa ładowanie, proszę czekać</Text>: <></>}
 					</Center>
 					<Center>
-						{nextPaginationUrl ? <Button isDisabled={nextPaginationUrl && apiCalls.isLoading == false ? false : true} onClick={() => handleLoadMore()}>Załaduj więcej</Button> : <></> }
+						{nextPaginationUrl && paginationElements.length !== 0 ? <Button isDisabled={nextPaginationUrl && apiCalls.isLoading == false ? false : true} onClick={() => handleLoadMore()}>Załaduj więcej</Button> : <></> }
 					</Center>
 				</Box>
 			</Box>
@@ -70,7 +68,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 Pagination.propTypes = {
 	paginationElements: PropTypes.array,
-	nextPaginationUrl: PropTypes.string,
+	nextPaginationUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	getPaginationPage: PropTypes.func,
 	apiCalls: PropTypes.object,
 	clearPaginationElements: PropTypes.func
