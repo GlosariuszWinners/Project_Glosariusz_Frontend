@@ -1,5 +1,6 @@
 import { Box, Button, Center, Grid, GridItem } from '@chakra-ui/react';
 import { useState } from 'react';
+import WordDetails from '../WordDetails/WordDetails';
 
 const Pagination = () => {
 	const [paginationLetter, setPaginationLetter] = useState('a');
@@ -23,11 +24,7 @@ const Pagination = () => {
 	// }
 	if (elemToShow){
 		return(
-			<div>
-				<div>Tutaj bedzie dymek przedstawiajacy element {elemToShow.polish}</div>
-				<button onClick={() => handleBackToPagination()}>Powrót do Listy</button>
-			</div>
-			
+			<WordDetails handleBackToPagination={handleBackToPagination}/>
 		);
 	}
 	return(
