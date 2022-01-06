@@ -32,7 +32,6 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 				<div>Tutaj bedzie dymek przedstawiajacy element {elemToShow.polishWord}</div>
 				<button onClick={() => handleBackToPagination()}>Powrót do Listy</button>
 			</div>
-			
 		);
 	}
 	console.log(apiCalls.isLoading);
