@@ -7,6 +7,7 @@ import WordDetails from '../WordDetails/WordDetails';
 const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, apiCalls, clearPaginationElements }) => {
 	const [paginationLetter, setPaginationLetter] = useState('a');
 	useEffect(() => {
+		clearPaginationElements();
 		getPaginationPage(`http://localhost:8080/api/words?polishWord=${paginationLetter}`);
 	}, [paginationLetter]);
 
