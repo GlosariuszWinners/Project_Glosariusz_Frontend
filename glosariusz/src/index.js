@@ -10,6 +10,7 @@ import App from './App';
 import { logger } from './main/ducks/middleware/logger';
 import reducers from './main/ducks/reducers/index';
 const store = createStore(reducers, applyMiddleware(apiMiddleware,thunk, logger));
+
 ReactDOM.render(
 	<React.StrictMode>
 		<Provider store={store}>
