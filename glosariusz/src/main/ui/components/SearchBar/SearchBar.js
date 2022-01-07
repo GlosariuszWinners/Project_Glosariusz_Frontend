@@ -25,15 +25,15 @@ const SearchBar = () => {
 				fontSize='3xl'
 				_placeholder={{
 					height: '43px',
-					'font-family': 'Ubuntu',
-					'font-size': '35px',
-					'font-weight': 'lighter',
-					'font-stretch': 'normal',
-					'font-style': 'normal',
-					'line-height': 'normal',
-					'letter-spacing': '-0.7px',
-					'text-align': 'left',
-					'padding-right': '60px',
+					'fontFamily': 'Ubuntu',
+					'fontSize': '35px',
+					'fontWeight': 'lighter',
+					'fontStretch': 'normal',
+					'fontStyle': 'normal',
+					'lineHeight': 'normal',
+					'letterSpacing': '-0.7px',
+					'textAlign': 'left',
+					'paddingRight': '60px',
 					color: '#8a958f',
 				}}
 			/>
