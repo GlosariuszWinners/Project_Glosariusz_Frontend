@@ -36,26 +36,23 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 		);
 	}
 	return(
-		<div className="Pagination">
-			<Box m={'5', '20', '5', '20'}>
-				{polishAlphabeth.map(letter => <Button style={letter === paginationLetter ? { 'backgroundColor': '#f6ae2d' } : { 'backgroundColor': 'rgba(119, 203, 229, 0.2)' }} onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoading || letter === paginationLetter} key={letter}>{letter.toUpperCase()}</Button>)}
-				<Box bgColor={'#fdfdfd'} borderRadius={'50px'}>
-					<Center>
-						{!apiCalls.isLoading && paginationElements.length == 0 ? <Text>Brak słówek na literę <Text color={'#fdfdfd'} backgroundColor={'#f6ae2d'}><Center>{paginationLetter.toUpperCase()}</Center></Text></Text> : <></>}
-					</Center>
-					<Grid templateColumns='repeat(2, 1fr)' gap={4} p={'50px 50px 50px 50px'}>
-						{paginationElements.map(elem => <GridItem key={elem.id}><Button onClick={() => handleElemButtonClick(elem)}>{elem.polishWord}</Button></GridItem>)}
-					</Grid>
-					<Center>
-						{apiCalls.isLoading == true ? <Text fontSize={'md'} color={'gray.400'}>Trwa ładowanie, proszę czekać</Text>: <></>}
-					</Center>
-					<Center>
-						{nextPaginationUrl && paginationElements.length !== 0 ? <Button isDisabled={nextPaginationUrl && apiCalls.isLoading == false ? false : true} onClick={() => handleLoadMore()}>Załaduj więcej</Button> : <></> }
-					</Center>
-				</Box>
+		<Box maxW="100vw">
+			{polishAlphabeth.map(letter => <Button style={letter === paginationLetter ? { 'backgroundColor': '#f6ae2d' } : { 'backgroundColor': 'rgba(119, 203, 229, 0.2)' }} onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoading || letter === paginationLetter} key={letter}>{letter.toUpperCase()}</Button>)}
+			<Box bgColor={'#fdfdfd'} borderRadius={'lg'}>
+				<Center>
+					{!apiCalls.isLoading && paginationElements.length == 0 ? <Text>Brak słówek na literę <Text color={'#fdfdfd'} backgroundColor={'#f6ae2d'}><Center>{paginationLetter.toUpperCase()}</Center></Text></Text> : <></>}
+				</Center>
+				<Grid>
+					{paginationElements.map(elem => <GridItem key={elem.id}><Button onClick={() => handleElemButtonClick(elem)}>{elem.polishWord}</Button></GridItem>)}
+				</Grid>
+				<Center>
+					{apiCalls.isLoading == true ? <Text fontSize={'md'} color={'gray.400'}>Trwa ładowanie, proszę czekać</Text>: <></>}
+				</Center>
+				<Center>
+					{nextPaginationUrl && paginationElements.length !== 0 ? <Button isDisabled={nextPaginationUrl && apiCalls.isLoading == false ? false : true} onClick={() => handleLoadMore()}>Załaduj więcej</Button> : <></> }
+				</Center>
 			</Box>
-			
-		</div>
+		</Box>
 	);
 };
 const mapStateToProps = (state) => ({
