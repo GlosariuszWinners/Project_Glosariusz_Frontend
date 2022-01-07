@@ -14,13 +14,12 @@ const MainPage = () => {
 	return (
 		<Provider store={store}>
 			<Navbar/>
-			<div className='MainPage'>
-				<Box d="grid" justifyContent="center" backgroundColor={'#d0e8f2'}width='100vw'>
-					<Logo/>
-					<SearchBar/>
-					<Pagination/>
-				</Box>
-			</div>
+			<Box d="grid" justifyContent="center" backgroundColor={'#d0e8f2'} position="relative">
+				<Logo/>
+				<SearchBar/>
+			</Box>
+			<Pagination/>
+			
 		</Provider>
 	);
 };
