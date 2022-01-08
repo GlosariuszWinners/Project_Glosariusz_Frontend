@@ -1,4 +1,4 @@
-import { Box, Button, Center, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Box, Button, Center, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -36,23 +36,66 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 		);
 	}
 	return(
-		<Box maxW="100vw">
-			{polishAlphabeth.map(letter => <Button style={letter === paginationLetter ? { 'backgroundColor': '#f6ae2d' } : { 'backgroundColor': 'rgba(119, 203, 229, 0.2)' }} onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoading || letter === paginationLetter} key={letter}>{letter.toUpperCase()}</Button>)}
-			<Box bgColor={'#fdfdfd'} borderRadius={'lg'}>
-				<Center>
-					{!apiCalls.isLoading && paginationElements.length == 0 ? <Text>Brak słówek na literę <Text color={'#fdfdfd'} backgroundColor={'#f6ae2d'}><Center>{paginationLetter.toUpperCase()}</Center></Text></Text> : <></>}
-				</Center>
-				<Grid>
-					{paginationElements.map(elem => <GridItem key={elem.id}><Button onClick={() => handleElemButtonClick(elem)}>{elem.polishWord}</Button></GridItem>)}
-				</Grid>
-				<Center>
-					{apiCalls.isLoading == true ? <Text fontSize={'md'} color={'gray.400'}>Trwa ładowanie, proszę czekać</Text>: <></>}
-				</Center>
-				<Center>
-					{nextPaginationUrl && paginationElements.length !== 0 ? <Button isDisabled={nextPaginationUrl && apiCalls.isLoading == false ? false : true} onClick={() => handleLoadMore()}>Załaduj więcej</Button> : <></> }
-				</Center>
+		<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
+			<Box width='60vw'>
+				<Flex flexWrap='wrap' justifyContent='center'>
+					{polishAlphabeth.map(letter =>(
+						<Button
+							bgColor={letter === paginationLetter ? '#f6ae2d' :  'rgba(119, 203, 229, 0.2)'}
+							width="40px"
+							onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoading || letter === paginationLetter} key={letter}>
+							{letter.toUpperCase()}
+						</Button>)
+					)}
+				</Flex>
+				{!apiCalls.isLoading && paginationElements.length == 0 &&
+					<Flex bgColor='#fdfdfd' borderRadius='md' justifyContent='center'>
+						<Text as='span'>Brak słówek na literę
+							<Text color='#fdfdfd' backgroundColor='#f6ae2d' as='h2'>
+								<Center>
+									{paginationLetter.toUpperCase()}
+								</Center>
+							</Text>
+						</Text>
+					</Flex>}
+				{/* <Fade in={!paginationElements.length}>
+					<Flex bgColor='#fdfdfd' borderRadius='md' justifyContent='center'>
+						<Text>Brak słówek na literę
+							<Text color='#fdfdfd' backgroundColor='#f6ae2d'>
+								<Center>
+									{paginationLetter.toUpperCase()}
+								</Center>
+							</Text>
+						</Text>
+					</Flex>
+				</Fade> */}
+				<Flex bgColor='#fdfdfd' borderTopRadius='md'>
+					<Grid templateColumns={{ lg: 'repeat(2, 1fr)', sm: '1fr' }} width='100%' rowGap='13px' mt={1} marginLeft={3} mb={1}>
+						{paginationElements.map(elem =>
+							(
+								<GridItem key={elem.id} alignSelf='center' overflow='hidden'>
+									<Text as='span' onClick={() => handleElemButtonClick(elem)} color='#707070' letterSpacing='-0.54px' fontWeight={700} padding="4px" cursor="pointer">
+										{elem.polishWord}
+									</Text>
+								</GridItem>
+							)
+						)}
+					</Grid>
+				</Flex>
+				<Flex bgColor='#fdfdfd' borderBottomRadius='md' flexDirection='column'>
+					<Flex justifyContent="center">
+						{apiCalls.isLoading == true && <Text fontSize='md' color='gray.400'>Trwa ładowanie, proszę czekać</Text>}
+					</Flex>
+					<Flex justifyContent="center">
+						{(nextPaginationUrl && paginationElements.length !== 0) &&
+							<Button isDisabled={nextPaginationUrl && apiCalls.isLoading == false ? false : true} onClick={() => handleLoadMore()}>
+								Załaduj więcej
+							</Button>
+						}
+					</Flex>
+				</Flex>
 			</Box>
-		</Box>
+		</Flex>
 	);
 };
 const mapStateToProps = (state) => ({
