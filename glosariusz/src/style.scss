@@ -1,4 +1,7 @@
 @import './main/ui/static/Config.scss';
+html{
+    height: 100%;
+}
 body {
-    background-color: $background-color;
+    height: 100%;
 }

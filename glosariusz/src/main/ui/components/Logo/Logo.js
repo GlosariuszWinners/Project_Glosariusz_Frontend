@@ -4,7 +4,7 @@ const Logo = () => {
 	return (
 		<div className="Logo">
 			<Center>
-				<Text width='60vw' height="7vw" fontFamily="Ubuntu" fontSize={{ 'sm': '10px', 'md': '20px', 'lg': '30px', 'xl': '40px' }} fontWeight="normal" textAlign="center"  color='#fff'>Polsko - Angielski Słownik Biologiczny</Text>
+				<Text height="7vw" fontFamily="Ubuntu" fontSize={{ 'sm': '18px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center"  color='#fff'>Polsko - Angielski Słownik Biologiczny</Text>
 			</Center>
 		</div>
 	);
