@@ -29,8 +29,7 @@ const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginat
 	if (elemToShow){
 		return(
 			<div>
-				<Button onClick={() => handleBackToPagination()}>Powrót do Listy</Button>
-				<WordDetails word={elemToShow}/>
+				<WordDetails handleBackToPagination={handleBackToPagination} word={elemToShow}/>
 			</div>
 		);
 	}
