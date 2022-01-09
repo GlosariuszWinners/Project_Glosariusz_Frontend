@@ -1,6 +1,6 @@
 import { CLEAR_PAGINATION_ELEMENTS, PAGINATION_GET_SUCCESS } from '../actions/types';
 
-const paginationElements = (state=[], action) => {
+const paginationElementsReducer = (state=[], action) => {
 	switch (action.type){
 	case PAGINATION_GET_SUCCESS:
 		return [...state, ...action.payload.data];
@@ -10,4 +10,4 @@ const paginationElements = (state=[], action) => {
 		return state;
 	}
 };
-export default paginationElements;
+export default paginationElementsReducer;

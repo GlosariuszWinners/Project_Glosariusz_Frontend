@@ -23,6 +23,7 @@
     "react": "^17.0.2",
     "react-admin": "^3.19.5",
     "react-dom": "^17.0.2",
+    "react-onclickoutside": "^6.12.1",
     "react-redux": "^7.2.6",
     "react-router": "^5.2.1",
     "react-router-dom": "5.3.0",
