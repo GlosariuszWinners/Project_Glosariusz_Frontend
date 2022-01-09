@@ -17,7 +17,7 @@ const MainPage = () => {
 		<Provider store={store}>
 			<Navbar/>
 			<Box d="grid" justifyContent="center" backgroundColor={'#d0e8f2'} position="relative">
-				<Logo/>
+				<Logo setElemToShow={setElemToShow}/>
 				<SearchBar elemToShow={elemToShow} setElemToShow={setElemToShow}/>
 			</Box>
 			<Pagination elemToShow={elemToShow} setElemToShow={setElemToShow}/>

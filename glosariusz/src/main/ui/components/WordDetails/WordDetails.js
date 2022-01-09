@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Center, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, Grid, GridItem, Text, Button } from '@chakra-ui/react';
 
 // eslint-disable-next-line no-unused-vars
-const WordDetails = ({ word }) => {
+const WordDetails = ({ word, handleBackToPagination }) => {
 	return (
 		<div className='WordDetails'>
 			<Center>
 				<Box bgColor={'#61abc2'} borderRadius={'20px'} maxWidth={'70vw'}>
+					<Button onClick={() => handleBackToPagination()}>Powrót do Listy</Button>
 					<Flex width="100%" height="100%" padding="40px" alignItems="center">
 						<Grid templateColumns='36px 1fr' gap={4} alignItems="center" justifyItems="flex-start">
 							<GridItem><Text>Flag</Text></GridItem>
@@ -50,6 +51,7 @@ const WordDetails = ({ word }) => {
 };
 
 WordDetails.propTypes = {
-	word: PropTypes.object
+	word: PropTypes.object,
+	handleBackToPagination: PropTypes.func
 };
 export default WordDetails;
