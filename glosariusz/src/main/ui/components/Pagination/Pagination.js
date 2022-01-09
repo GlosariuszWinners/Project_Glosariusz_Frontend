@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { clearPaginationElements, getPaginationPage } from '../../../ducks/actions';
 import WordDetails from '../WordDetails/WordDetails';
-const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, apiCalls, clearPaginationElements }) => {
+const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginationUrl, getPaginationPage, apiCalls, clearPaginationElements }) => {
 	const [paginationLetter, setPaginationLetter] = useState('a');
 	useEffect(() => {
 		clearPaginationElements();
@@ -12,7 +12,6 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 	}, [paginationLetter]);
 
 	const polishAlphabeth = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'o', 'ó', 'p', 'q', 'r', 's', 'ś', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ź', 'ż'];
-	const [elemToShow, setElemToShow] = useState(null); 
 
 	const handleElemButtonClick = (elem) => {
 		setElemToShow(elem);
@@ -30,7 +29,7 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 	if (elemToShow){
 		return(
 			<div>
-				<button onClick={() => handleBackToPagination()}>Powrót do Listy</button>
+				<Button onClick={() => handleBackToPagination()}>Powrót do Listy</Button>
 				<WordDetails word={elemToShow}/>
 			</div>
 		);
@@ -43,12 +42,13 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 						<Button
 							bgColor={letter === paginationLetter ? '#f6ae2d' :  'rgba(119, 203, 229, 0.2)'}
 							width="40px"
-							onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoading || letter === paginationLetter} key={letter}>
+							onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoadingPagination || letter === paginationLetter} key={letter}>
 							{letter.toUpperCase()}
 						</Button>)
 					)}
+					
 				</Flex>
-				{!apiCalls.isLoading && paginationElements.length == 0 &&
+				{!apiCalls.isLoadingPagination && !apiCalls.isErrorPagination && paginationElements.length === 0 &&
 					<Flex bgColor='#fdfdfd' borderRadius='md' justifyContent='center'>
 						<Text as='span'>Brak słówek na literę
 							<Text color='#fdfdfd' backgroundColor='#f6ae2d' as='h2'>
@@ -58,6 +58,12 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 							</Text>
 						</Text>
 					</Flex>}
+				{apiCalls.isErrorPagination &&
+				<Flex bgColor='#fdfdfd' borderRadius='md' justifyContent='center'>
+					<Text as='span'>
+						Wystąpił problem, spróbuj ponownie pózniej
+					</Text>
+				</Flex>}
 				{/* <Fade in={!paginationElements.length}>
 					<Flex bgColor='#fdfdfd' borderRadius='md' justifyContent='center'>
 						<Text>Brak słówek na literę
@@ -69,6 +75,7 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 						</Text>
 					</Flex>
 				</Fade> */}
+				{paginationElements.length > 0 &&
 				<Flex bgColor='#fdfdfd' borderTopRadius='md'>
 					<Grid templateColumns={{ lg: 'repeat(2, 1fr)', sm: '1fr' }} width='100%' rowGap='13px' mt={1} marginLeft={3} mb={1}>
 						{paginationElements.map(elem =>
@@ -82,13 +89,14 @@ const Pagination = ({ paginationElements, nextPaginationUrl, getPaginationPage, 
 						)}
 					</Grid>
 				</Flex>
+				}
 				<Flex bgColor='#fdfdfd' borderBottomRadius='md' flexDirection='column'>
 					<Flex justifyContent="center">
-						{apiCalls.isLoading == true && <Text fontSize='md' color='gray.400'>Trwa ładowanie, proszę czekać</Text>}
+						{apiCalls.isLoadingPagination === true && <Text fontSize='md' color='gray.400'>Trwa ładowanie, proszę czekać</Text>}
 					</Flex>
 					<Flex justifyContent="center">
 						{(nextPaginationUrl && paginationElements.length !== 0) &&
-							<Button isDisabled={nextPaginationUrl && apiCalls.isLoading == false ? false : true} onClick={() => handleLoadMore()}>
+							<Button isDisabled={nextPaginationUrl && apiCalls.isLoadingPagination === false ? false : true} onClick={() => handleLoadMore()}>
 								Załaduj więcej
 							</Button>
 						}
@@ -112,6 +120,8 @@ Pagination.propTypes = {
 	nextPaginationUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	getPaginationPage: PropTypes.func,
 	apiCalls: PropTypes.object,
-	clearPaginationElements: PropTypes.func
+	clearPaginationElements: PropTypes.func,
+	elemToShow: PropTypes.object,
+	setElemToShow: PropTypes.func
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);
