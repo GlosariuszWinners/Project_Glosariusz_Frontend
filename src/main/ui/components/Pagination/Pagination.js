@@ -11,7 +11,7 @@ const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginat
 		getPaginationPage(`http://localhost:8080/api/words?polishWord=${paginationLetter}`);
 	}, [paginationLetter]);
 
-	const polishAlphabeth = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'o', 'ó', 'p', 'q', 'r', 's', 'ś', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ź', 'ż'];
+	const polishAlphabeth = ['a', 'b', 'c', 'ć', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'o', 'ó', 'p', 'q', 'r', 's', 'ś', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ź', 'ż'];
 
 	const handleElemButtonClick = (elem) => {
 		setElemToShow(elem);
@@ -36,11 +36,17 @@ const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginat
 	return(
 		<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
 			<Box width='60vw'>
-				<Box display={{ 'sm': 'block', 'xl': 'flex' }} justifyContent={{ 'sm': 'center' }} overflow={{ 'sm': 'auto', 'xl': 'visible' }} whiteSpace={{ 'sm': 'nowrap' }} flexWrap={{ 'xl': 'wrap' }}>
+				<Box display={{ 'sm': 'block', 'xl': 'flex' }} justifyContent={{ 'sm': 'center' }} overflow={{ 'sm': 'auto', 'xl': 'visible' }} whiteSpace={{ 'sm': 'nowrap' }} flexWrap={{ 'xl': 'wrap' }} marginTop={5} marginBottom={5}>
 					{polishAlphabeth.map(letter =>(
 						<Button
-							bgColor={letter === paginationLetter ? '#f6ae2d' :  'rgba(119, 203, 229, 0.2)'}
-							width="40px"
+							bgColor={letter === paginationLetter ? '#f6ae2d' : '#d0e8f2'}
+							color='#fdfdfd'
+							width='42px'
+							_hover={{ 'bgColor': 'rgba(119, 203, 229, 0.5)' }}
+							_disabled={{ 'bgColor': '#f6ae2d', 'cursor': 'not-allowed' }}
+							height='25px'
+							marginRight='20px'
+							marginTop='10px'
 							onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoadingPagination || letter === paginationLetter} key={letter}>
 							{letter.toUpperCase()}
 						</Button>)
@@ -76,7 +82,7 @@ const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginat
 				</Fade> */}
 				{paginationElements.length > 0 &&
 				<Flex bgColor='#fdfdfd' borderTopRadius='md'>
-					<Grid templateColumns={{ lg: 'repeat(2, 1fr)', sm: '1fr' }} width='100%' rowGap='13px' mt={1} marginLeft={3} mb={1}>
+					<Grid templateColumns={{ 'lg': 'repeat(2, 1fr)', 'sm': '1fr' }} width='100%' rowGap='13px' mt={1} marginLeft={3} mb={1}>
 						{paginationElements.map(elem =>
 							(
 								<GridItem key={elem.id} alignSelf='center' overflow='hidden'>
