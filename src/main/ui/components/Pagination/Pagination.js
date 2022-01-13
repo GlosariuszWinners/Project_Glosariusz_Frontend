@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { clearPaginationElements, getPaginationPage } from '../../../ducks/actions';
 import WordDetails from '../WordDetails/WordDetails';
+
 const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginationUrl, getPaginationPage, apiCalls, clearPaginationElements }) => {
 	const [paginationLetter, setPaginationLetter] = useState('a');
 	useEffect(() => {
@@ -36,16 +37,24 @@ const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginat
 	return(
 		<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
 			<Box width='60vw'>
-				<Box display={{ 'sm': 'block', 'xl': 'flex' }} justifyContent={{ 'sm': 'center' }} overflow={{ 'sm': 'auto', 'xl': 'visible' }} whiteSpace={{ 'sm': 'nowrap' }} flexWrap={{ 'xl': 'wrap' }} marginTop={5} marginBottom={5}>
+				<Box display={{ 'sm': 'block', 'xl': 'flex' }}
+					justifyContent={{ 'sm': 'center' }}
+					overflow={{ 'sm': 'auto', 'xl': 'visible' }}
+					whiteSpace={{ 'sm': 'nowrap' }}
+					flexWrap={{ 'xl': 'wrap' }}
+					marginTop={5}
+					marginBottom={5}
+				>
 					{polishAlphabeth.map(letter =>(
 						<Button
 							bgColor={letter === paginationLetter ? '#f6ae2d' : '#d0e8f2'}
 							color='#fdfdfd'
 							width='42px'
-							_hover={{ 'bgColor': 'rgba(119, 203, 229, 0.5)' }}
+							_hover={{ 'bgColor': { 'lg': 'rgba(119, 203, 229, 0.5)', 'sm': '#f6ae2d' } }}
 							_disabled={{ 'bgColor': '#f6ae2d', 'cursor': 'not-allowed' }}
-							height='25px'
-							marginRight='20px'
+							height={{ 'sm': '35px', 'lg': '25px' }}
+							marginRight={{ 'sm': '5px' ,'lg': '20px' }}
+							marginBottom={{ 'sm': '10px', 'lg': '3px' }}
 							marginTop='10px'
 							onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoadingPagination || letter === paginationLetter} key={letter}>
 							{letter.toUpperCase()}
@@ -69,20 +78,17 @@ const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginat
 						Wystąpił problem, spróbuj ponownie pózniej
 					</Text>
 				</Flex>}
-				{/* <Fade in={!paginationElements.length}>
-					<Flex bgColor='#fdfdfd' borderRadius='md' justifyContent='center'>
-						<Text>Brak słówek na literę
-							<Text color='#fdfdfd' backgroundColor='#f6ae2d'>
-								<Center>
-									{paginationLetter.toUpperCase()}
-								</Center>
-							</Text>
-						</Text>
-					</Flex>
-				</Fade> */}
 				{paginationElements.length > 0 &&
 				<Flex bgColor='#fdfdfd' borderTopRadius='md'>
-					<Grid templateColumns={{ 'lg': 'repeat(2, 1fr)', 'sm': '1fr' }} width='100%' rowGap='13px' mt={1} marginLeft={3} mb={1}>
+					<Grid
+						templateColumns={{ 'lg': 'repeat(2, 1fr)', 'sm': '1fr' }}
+						width='100%'
+						rowGap='13px'
+						mt={1}
+						marginLeft={{ 'sm': '15px', 'lg': '45px' }}
+						marginTop={{ 'sm': '15px', 'lg': '45px' }}
+						mb={1}
+					>
 						{paginationElements.map(elem =>
 							(
 								<GridItem key={elem.id} alignSelf='center' overflow='hidden'>
