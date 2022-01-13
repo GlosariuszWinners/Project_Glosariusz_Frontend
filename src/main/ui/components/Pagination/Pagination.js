@@ -36,7 +36,7 @@ const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginat
 	return(
 		<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
 			<Box width='60vw'>
-				<Flex flexWrap='wrap' justifyContent='center'>
+				<Box display={{ 'sm': 'block', 'xl': 'flex' }} justifyContent={{ 'sm': 'center' }} overflow={{ 'sm': 'auto', 'xl': 'visible' }} whiteSpace={{ 'sm': 'nowrap' }} flexWrap={{ 'xl': 'wrap' }}>
 					{polishAlphabeth.map(letter =>(
 						<Button
 							bgColor={letter === paginationLetter ? '#f6ae2d' :  'rgba(119, 203, 229, 0.2)'}
@@ -46,7 +46,7 @@ const Pagination = ({ elemToShow, setElemToShow, paginationElements, nextPaginat
 						</Button>)
 					)}
 					
-				</Flex>
+				</Box>
 				{!apiCalls.isLoadingPagination && !apiCalls.isErrorPagination && paginationElements.length === 0 &&
 					<Flex bgColor='#fdfdfd' borderRadius='md' justifyContent='center'>
 						<Text as='span'>Brak słówek na literę
