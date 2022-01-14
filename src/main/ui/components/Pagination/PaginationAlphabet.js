@@ -1,6 +1,7 @@
 import { Box, Button } from '@chakra-ui/react';
 import { polishAlphabeth } from './utils/alphabeth';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const PaginationAlphabet = ({ handleChangePaginationLetter, paginationLetter, apiCalls }) => {
 	return (
@@ -32,10 +33,15 @@ const PaginationAlphabet = ({ handleChangePaginationLetter, paginationLetter, ap
 	);
 };
 
+const mapStateToProps = (state) => ({
+	apiCalls: state.apiCalls,
+});
+
+
 PaginationAlphabet.propTypes = {
 	handleChangePaginationLetter: PropTypes.func,
 	paginationLetter: PropTypes.string,
 	apiCalls: PropTypes.object,
 };
 
-export default PaginationAlphabet;
+export default connect(mapStateToProps, null)(PaginationAlphabet);

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import searchIcon from '../../static/searchIcon.png';
-import { getSuggestions, clearSuggestions } from '../../../ducks/actions';
+import { getSuggestions, clearSuggestions, setElemToShow } from '../../../ducks/actions';
 import listenForOutsideClick from './listen-for-outside-clicks';
 
 const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, suggestions }) => {
@@ -107,7 +107,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 						p={{ 'xl': '25px 80px 25px 60px' } }
 						fontSize={{ 'xl': '35px' }}
 						_placeholder={{
-							height: { 'xl': '60px' },
+							'height': { 'xl': '60px' },
 							'fontFamily': 'Ubuntu',
 							'fontSize': { 'xl': '35px' },
 							'fontWeight': 'lighter',
@@ -117,7 +117,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 							'letterSpacing': '-0.7px',
 							'textAlign': 'left',
 							'paddingRight': { 'xl': '60px' },
-							color: '#8a958f',
+							'color': '#8a958f',
 						}}
 					/>
 				</InputGroup>
@@ -134,7 +134,8 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
 	getSuggestions: (inputValue) => dispatch(getSuggestions(inputValue)),
-	clearSuggestions: () => dispatch(clearSuggestions())
+	clearSuggestions: () => dispatch(clearSuggestions()),
+	setElemToShow: (payload) => dispatch(setElemToShow(payload))
 });
 SearchBar.propTypes = {
 	suggestions: PropTypes.array,

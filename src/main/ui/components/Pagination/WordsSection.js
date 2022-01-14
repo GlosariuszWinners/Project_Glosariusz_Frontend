@@ -1,8 +1,12 @@
 import { Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { setElemToShow } from '../../../ducks/actions';
 
-const WordsSection = ({ handleElemButtonClick, paginationElements }) => {
+const WordsSection = ({ setElemToShow, paginationElements }) => {
+	const handleElemButtonClick = (elem) => {
+		setElemToShow(elem);
+	};
 	return (
 		<Flex bgColor='#fdfdfd' borderTopRadius='md'>
 			<Grid
@@ -30,6 +34,7 @@ const WordsSection = ({ handleElemButtonClick, paginationElements }) => {
 
 WordsSection.propTypes = {
 	handleElemButtonClick: PropTypes.func,
+	setElemToShow: PropTypes.func,
 	paginationElements: PropTypes.array,
 };
 
@@ -37,4 +42,8 @@ const mapStateToProps = (state) => ({
 	paginationElements: state.paginationElements,
 });
 
-export default connect(mapStateToProps, null)(WordsSection);
+const mapDispatchToProps = (dispatch) => ({
+	setElemToShow: (payload) => dispatch(setElemToShow(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WordsSection);
