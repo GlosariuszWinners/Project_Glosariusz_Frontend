@@ -25,10 +25,11 @@ const PaginationAlphabet = ({ clearPaginationElements, setPaginationLetter, pagi
 					width='42px'
 					_hover={{ 'bgColor': { 'lg': 'rgba(119, 203, 229, 0.5)', 'sm': '#f6ae2d' } }}
 					_disabled={{ 'bgColor': '#f6ae2d', 'cursor': 'not-allowed' }}
-					height={{ 'sm': '35px', 'lg': '25px' }}
-					marginRight={{ 'sm': '5px' ,'lg': '20px' }}
-					marginBottom={{ 'sm': '10px', 'lg': '3px' }}
+					height={{ 'sm': '45px', 'xl': '32px' }}
+					marginRight={{ 'sm': '5px' ,'lg': '17px' }}
+					marginBottom={{ 'sm': '15px', 'xl': '3px' }}
 					marginTop='10px'
+					fontSize={{ 'sm': '25px' }}
 					onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoadingPagination || letter === paginationLetter} key={letter}>
 					{letter.toUpperCase()}
 				</Button>)
