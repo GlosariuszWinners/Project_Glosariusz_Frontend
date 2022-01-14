@@ -1,5 +1,6 @@
 import { Center, Flex, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 const NoWordsFound = ({ paginationLetter }) => {
 	return (
@@ -15,8 +16,12 @@ const NoWordsFound = ({ paginationLetter }) => {
 	);
 };
 
+const mapStateToProps = (state) => ({
+	paginationLetter: state.paginationLetter
+});
+
 NoWordsFound.propTypes = {
 	paginationLetter: PropTypes.string,
 };
 
-export default NoWordsFound;
+export default connect(mapStateToProps, null)(NoWordsFound);

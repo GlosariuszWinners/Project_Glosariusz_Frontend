@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import { logger } from '../../../ducks/middleware/logger';
 import reducers from '../../../ducks/reducers/index';
 
-const store = createStore(reducers, applyMiddleware(apiMiddleware,thunk, logger));
+const store = createStore(reducers, applyMiddleware(apiMiddleware, thunk, logger));
 
 const MainPage = () => {
 	return (
