@@ -1,4 +1,4 @@
-import { CLEAR_PAGINATION_ELEMENTS, CLEAR_SUGGESTIONS_ELEMENTS, PAGINATION_GET_SUCCESS, SET_ERROR_PAGINATION, SET_ERROR_SUGGESTIONS, SET_LOADING_PAGINATION, SET_LOADING_SUGGESTIONS, SUGGESTIONS_GET_SUCCESS, SET_ELEMENT_TO_SHOW, CLEAR_ELEMENT_TO_SHOW } from './types';
+import { CLEAR_PAGINATION_ELEMENTS, CLEAR_SUGGESTIONS_ELEMENTS, PAGINATION_GET_SUCCESS, SET_ERROR_PAGINATION, SET_ERROR_SUGGESTIONS, SET_LOADING_PAGINATION, SET_LOADING_SUGGESTIONS, SUGGESTIONS_GET_SUCCESS, SET_ELEMENT_TO_SHOW, CLEAR_ELEMENT_TO_SHOW, SET_PAGINATION_LETTER } from './types';
 import { createAction } from 'redux-api-middleware';
 
 export const getPaginationPage = (url) => (dispatch) => dispatch(createAction({
@@ -44,4 +44,9 @@ export const setElemToShow = (payload) => ({
 
 export const clearElemToShow = () => ({
 	type: CLEAR_ELEMENT_TO_SHOW
+});
+
+export const setPaginationLetter = (letter) => ({
+	type: SET_PAGINATION_LETTER,
+	payload: letter
 });
