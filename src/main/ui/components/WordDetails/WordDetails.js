@@ -10,16 +10,14 @@ const WordDetails = ({ elemToShow, clearElemToShow }) => {
 		clearElemToShow();
 	};
 	return (
-		<div className='WordDetails'>
-			<Center marginTop={5}>
-				<Box bgColor='#61abc2' borderRadius='20px' width={{ 'sm': '90vw', 'lg': '60vw' }}>
-					<Button onClick={handleBackToPagination}>Powrót do Listy</Button>
-					<PolishSection word={elemToShow}/>
-					<EnglishSection word={elemToShow}/>
-					<DefnitionSection word={elemToShow}/>
-				</Box>
-			</Center>
-		</div>
+		<Center marginTop={5} position='relative' zIndex={2}>
+			<Box bgColor='#61abc2' borderRadius='20px' width={{ 'sm': '90vw', 'lg': '60vw' }}>
+				<Button onClick={handleBackToPagination}>Powrót do Listy</Button>
+				<PolishSection word={elemToShow}/>
+				<EnglishSection word={elemToShow}/>
+				<DefnitionSection word={elemToShow}/>
+			</Box>
+		</Center>
 	);
 };
 

@@ -65,8 +65,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 		);
 	};
 	const renderSuggestions = () => (
-		<List spacing={3} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }} bg={'gray.100'} borderRadius={{ 'xl': '60px' }} p={{ 'xl': '25px 25px 25px 60px' } }
-		>
+		<List spacing={3} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }} bg={'gray.100'} borderRadius={{ 'xl': '60px' }} p={{ 'xl': '25px 25px 25px 60px' }} zIndex={2} position='relative'>
 			{/* tutaj mozna dodac flagi i synonim albo gdy sa dwa synonimy po angielsku to dodac ikonki i 1 z kilku definicji */}
 			{getResultsToRender()}	
 		</List>
@@ -76,7 +75,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 
 	return (
 		<Box>
-			<Center>
+			<Center position='relative' zIndex={2}>
 				<InputGroup ref={searchBarRef} className={isOpen ? 'm-menu -active' : 'm-menu '} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }}  justifySelf="center">
 					<InputRightElement
 						pointerEvents='none'

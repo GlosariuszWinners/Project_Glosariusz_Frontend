@@ -20,9 +20,9 @@ const PaginationAlphabet = ({ clearPaginationElements, setPaginationLetter, pagi
 		>
 			{polishAlphabeth.map(letter => (
 				<Button
-					bgColor={letter === paginationLetter ? '#f6ae2d' : '#d0e8f2'}
+					bgColor={letter === paginationLetter ? '#f6ae2d' : 'transparent'}
 					color='#fdfdfd'
-					width='42px'
+					width={{ 'sm': '42px', 'xl': '55px' }}
 					_hover={{ 'bgColor': { 'lg': 'rgba(119, 203, 229, 0.5)', 'sm': '#f6ae2d' } }}
 					_disabled={{ 'bgColor': '#f6ae2d', 'cursor': 'not-allowed' }}
 					height={{ 'sm': '45px', 'xl': '32px' }}

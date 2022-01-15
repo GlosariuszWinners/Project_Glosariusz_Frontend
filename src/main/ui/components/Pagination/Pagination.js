@@ -22,7 +22,7 @@ const Pagination = ({ elemToShow, paginationLetter, paginationElements, getPagin
 	}
 	return(
 		<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
-			<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '60vw' }}>
+			<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '60vw' }} zIndex={2}>
 				<PaginationAlphabet/>
 				{!apiCalls.isLoadingPagination && !apiCalls.isErrorPagination && paginationElements.length === 0 &&
 					<NoWordsFound/>
