@@ -8,7 +8,7 @@ const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) =
 		setElemToShow(elem);
 	};
 	return (
-		<Flex bgColor='#fdfdfd' borderTopRadius='50px'>
+		<Flex bgColor='#fdfdfd' borderTopRadius='50px' marginTop='88px'>
 			<Grid
 				templateColumns={{ 'md': 'repeat(2, 1fr)', 'sm': '1fr' }}
 				width='100%'

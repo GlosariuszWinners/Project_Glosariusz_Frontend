@@ -15,9 +15,12 @@ const Pagination = ({ elemToShow, paginationLetter, paginationElements, getPagin
 
 	if (elemToShow){
 		return(
-			<div>
-				<WordDetails/>
-			</div>
+			<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
+				<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '60vw' }} zIndex={2}>
+					<PaginationAlphabet/>
+					<WordDetails/>
+				</Box>
+			</Flex>
 		);
 	}
 	return(
