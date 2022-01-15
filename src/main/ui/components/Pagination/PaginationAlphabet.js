@@ -15,7 +15,7 @@ const PaginationAlphabet = ({ clearPaginationElements, setPaginationLetter, pagi
 			overflow={{ 'sm': 'auto', 'xl': 'visible' }}
 			whiteSpace={{ 'sm': 'nowrap' }}
 			flexWrap={{ 'xl': 'wrap' }}
-			marginTop={5}
+			marginTop='59px'
 			marginBottom={5}
 		>
 			{polishAlphabeth.map(letter => (
