@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setElemToShow } from '../../../ducks/actions';
 
+
 const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) => {
 	const handleElemButtonClick = (elem) => {
 		setElemToShow(elem);
 	};
+
+
 	return (
 		<Flex bgColor='#fdfdfd' borderTopRadius='50px' marginTop='88px'>
 			<Grid
@@ -63,12 +66,12 @@ const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) =
 WordsSection.propTypes = {
 	setElemToShow: PropTypes.func,
 	paginationElements: PropTypes.array,
-	paginationLetter: PropTypes.string
+	paginationLetter: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
 	paginationElements: state.paginationElements,
-	paginationLetter: state.paginationLetter
+	paginationLetter: state.paginationLetter,
 });
 
 const mapDispatchToProps = (dispatch) => ({

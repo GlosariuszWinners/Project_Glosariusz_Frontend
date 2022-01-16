@@ -7,7 +7,7 @@ import leafLogo from '../../static/leaf.svg';
 
 const Logo = ({ clearElemToShow }) => {
 	const handleLogoClick = () => {
-		// clearElemToShow();
+		clearElemToShow();
 		console.log('Closing', clearElemToShow);
 	};
 	return (
@@ -31,7 +31,7 @@ const Logo = ({ clearElemToShow }) => {
 					}
 				}
 			>
-				<Box height='100%' bgColor='#fdfdfd' borderRadius='50%' position='relative' zIndex={2}>
+				<Box height='100%' bgColor='#fdfdfd' borderRadius='50%' position='relative' zIndex={2} onClick={handleLogoClick} cursor='pointer'>
 					<Center height='100%'>
 						<Image src={leafLogo}/>
 					</Center>

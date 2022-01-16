@@ -74,7 +74,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 	const handleEnterKeyPressed = (event) => {
 		if(event.key === 'Enter'){
 			setIsOpen(false);
-			handleSuggestionClick(suggestions[0]);	
+			suggestions.length > 0 && handleSuggestionClick(suggestions[0]);	
 		}
 	};
 
