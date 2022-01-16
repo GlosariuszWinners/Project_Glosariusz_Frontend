@@ -22,9 +22,9 @@ const Logo = ({ clearElemToShow }) => {
 				_before={
 					{ 	'content': '"a"',
 						'position': 'absolute',
-						'width': '130vw',
+						'width': { 'sm': '200vw', 'lg': '150vw', 'xl': '130vw' },
 						'bgColor': 'rgba(119, 203, 229, 0.2)',
-						'left': 'calc(-65vw + 86px)',
+						'left': { 'sm': 'calc(-100vw + 86px)', 'lg': 'calc(-75vw + 86px)', 'xl': 'calc(-65vw + 86px)' },
 						'top': 100,
 						'height': '1200px',
 						'borderRadius': '50%'
