@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { clearElemToShow, clearPaginationElements, setPaginationLetter } from '../../../ducks/actions';
 
-const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPaginationLetter, paginationLetter, apiCalls }) => {
+const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPaginationLetter, paginationLetter }) => {
 	const handleChangePaginationLetter = (letter) => {
 		clearPaginationElements();
 		clearElemToShow();
@@ -21,17 +21,21 @@ const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPagin
 		>
 			{polishAlphabeth.map(letter => (
 				<Button
+					key={letter}
 					bgColor={letter === paginationLetter ? '#f6ae2d' : 'transparent'}
 					color='#fdfdfd'
 					width={{ 'sm': '42px', 'xl': '55px' }}
-					_hover={{ 'bgColor': { 'lg': 'rgba(119, 203, 229, 0.5)', 'sm': '#f6ae2d' } }}
-					_disabled={{ 'bgColor': '#f6ae2d', 'cursor': 'not-allowed' }}
+					_active={{ 'bgColor': '#f6ae2d' }}
+					_hover={{ 'bgColor': { 'lg': 'rgba(119, 203, 229, 0.5)' } }}
+					_disabled={{ 'cursor': 'not-allowed' }}
 					height={{ 'sm': '45px', 'xl': '32px' }}
 					marginRight={{ 'sm': '5px' ,'lg': '17px' }}
 					marginBottom={{ 'sm': '15px', 'xl': '3px' }}
 					marginTop='10px'
 					fontSize={{ 'sm': '25px' }}
-					onClick={() => handleChangePaginationLetter(letter)} isDisabled={apiCalls.isLoadingPagination || letter === paginationLetter} key={letter}>
+					onClick={() => handleChangePaginationLetter(letter)}
+					isActive={letter === paginationLetter}
+					isDisabled={letter === paginationLetter}>
 					{letter.toUpperCase()}
 				</Button>)
 			)}
@@ -41,7 +45,6 @@ const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPagin
 };
 
 const mapStateToProps = (state) => ({
-	apiCalls: state.apiCalls,
 	paginationLetter: state.paginationLetter
 });
 
@@ -56,7 +59,6 @@ PaginationAlphabet.propTypes = {
 	clearPaginationElements: PropTypes.func,
 	setPaginationLetter: PropTypes.func,
 	paginationLetter: PropTypes.string,
-	apiCalls: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaginationAlphabet);

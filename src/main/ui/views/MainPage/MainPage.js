@@ -19,7 +19,6 @@ const MainPage = () => {
 				<SearchBar/>
 			</Box>
 			<Pagination/>
-			
 		</Provider>
 	);
 };
