@@ -13,11 +13,11 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(true);
 	useEffect(listenForOutsideClick(listening, setListening, searchBarRef, setIsOpen));
-	console.log(clearSuggestions);
 	const [inputValue, setInputValue] = useState('');
 	const [timer, setTimer] = useState(null);
 
 	const handleSuggestionClick = (elem) => {
+		setInputValue(elem.polishWord);
 		setElemToShow(elem);
 	};
 
@@ -38,7 +38,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 		if(inputValue.length > 2 && !apiCalls.isLoadingSuggestions && suggestions.length > 0){
 			return(
 				suggestions.slice(0,6).map((suggestion, index) => 
-					<ListItem key={index} onClick={() => handleSuggestionClick(suggestion)} p={3} borderBottom={'2px solid #fdfdfd'}>
+					<ListItem key={index} onClick={() => handleSuggestionClick(suggestion)} p={3} borderBottom={'2px solid #fdfdfd'} _hover={{ bg: '#fdfdfd' }}>
 						{suggestion.polishWord}
 					</ListItem>)
 			);
@@ -70,7 +70,13 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 			{getResultsToRender()}	
 		</List>
 	);
-		
+	
+	const handleEnterKeyPressed = (event) => {
+		if(event.key === 'Enter'){
+			setIsOpen(false);
+			handleSuggestionClick(suggestions[0]);	
+		}
+	};
 
 
 	return (
@@ -88,6 +94,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 					</InputRightElement>
 			
 					<Input
+						onKeyPress={handleEnterKeyPressed}
 						onClick={toggle}
 						placeholder={'Wpisz szukane słówko'}
 						bgColor="#fdfdfd"
