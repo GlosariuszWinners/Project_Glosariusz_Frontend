@@ -7,10 +7,11 @@ import leafLogo from '../../static/leaf.svg';
 
 const Logo = ({ clearElemToShow }) => {
 	const handleLogoClick = () => {
-		clearElemToShow();
+		// clearElemToShow();
+		console.log('Closing', clearElemToShow);
 	};
 	return (
-		<Center onClick={handleLogoClick} display='flex' flexDirection='column'>
+		<Center onClick={handleLogoClick} display='flex' flexDirection='column' className='Logo Center'>
 			<Text fontFamily="Ubuntu" fontSize={{ 'sm': '18px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center" color='#fff'>Polsko - Angielski Słownik Biologiczny</Text>
 			<Box
 				width='172px'

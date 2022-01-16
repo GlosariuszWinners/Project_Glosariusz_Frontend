@@ -2,11 +2,12 @@ import { Box, Button } from '@chakra-ui/react';
 import { polishAlphabeth } from './utils/alphabeth';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { clearPaginationElements, setPaginationLetter } from '../../../ducks/actions';
+import { clearElemToShow, clearPaginationElements, setPaginationLetter } from '../../../ducks/actions';
 
-const PaginationAlphabet = ({ clearPaginationElements, setPaginationLetter, paginationLetter, apiCalls }) => {
+const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPaginationLetter, paginationLetter, apiCalls }) => {
 	const handleChangePaginationLetter = (letter) => {
 		clearPaginationElements();
+		clearElemToShow();
 		setPaginationLetter(letter);
 	};
 	return (
@@ -45,11 +46,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+	clearElemToShow: () => dispatch(clearElemToShow()),
 	clearPaginationElements: () => dispatch(clearPaginationElements()),
 	setPaginationLetter: (letter) => dispatch(setPaginationLetter(letter))
 });
 
 PaginationAlphabet.propTypes = {
+	clearElemToShow: PropTypes.func,
 	clearPaginationElements: PropTypes.func,
 	setPaginationLetter: PropTypes.func,
 	paginationLetter: PropTypes.string,
