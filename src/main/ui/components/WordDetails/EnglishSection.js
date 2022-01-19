@@ -5,7 +5,7 @@ import ukFlag from '../../static/uk-flag.svg';
 
 const EnglishSection = ({ word }) => {
 	return (
-		<Flex width='100%' height='100%' paddingLeft={{ 'lg': '40px' }} paddingRight={{ 'lg': '40px' }} paddingBottom='20px'>
+		<Flex width='100%' height='100%' paddingLeft={{ 'lg': '40px' }} paddingRight={{ 'lg': '40px' }} paddingBottom='20px' as='section'>
 			<Grid templateColumns={{ 'lg': '36px 1fr 1fr', 'sm': '36px 1fr 1fr' }} gap={4} alignItems='center' justifyItems={{ 'sm': 'center', 'lg': 'flex-start' }}>
 				{word.synonyms.map((synonym, index) => (
 					<React.Fragment key={index}>

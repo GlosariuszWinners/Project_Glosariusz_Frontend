@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const PolishSections = ({ word }) => {
 	return (
-		<Flex width='100%' height='100%' padding='40px' alignItems='center'>
+		<Flex width='100%' height='100%' padding='40px' alignItems='center' as='section'>
 			<Grid templateColumns='36px 1fr' gap={4} alignItems='center' justifyItems='flex-start'>
 				<GridItem><Image src={polishFlag}/></GridItem>
 				<GridItem>

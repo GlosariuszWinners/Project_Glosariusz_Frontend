@@ -14,7 +14,7 @@ const MainPage = () => {
 	return (
 		<Provider store={store}>
 			<Navbar/>
-			<Box d="grid" justifyContent="center" backgroundColor={'#d0e8f2'} position="relative">
+			<Box display='grid' justifyContent='center' backgroundColor='#d0e8f2' position='relative' as='header'>
 				<Logo/>
 				<SearchBar/>
 			</Box>

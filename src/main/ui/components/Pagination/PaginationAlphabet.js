@@ -18,6 +18,7 @@ const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPagin
 			flexWrap={{ 'xl': 'wrap' }}
 			marginTop='59px'
 			marginBottom={5}
+			as='section'
 		>
 			{polishAlphabeth.map(letter => (
 				<Button

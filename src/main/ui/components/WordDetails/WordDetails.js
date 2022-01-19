@@ -11,7 +11,7 @@ const WordDetails = ({ elemToShow, clearElemToShow }) => {
 	};
 	return (
 		<Center marginTop={5} position='relative' zIndex={2}>
-			<Box bgColor='#61abc2' borderRadius='20px' width='100%' marginTop='88px'>
+			<Box bgColor='#61abc2' borderRadius='20px' width='100%' marginTop='88px' as='main'>
 				<Button onClick={handleBackToPagination}>Powrót do Listy</Button>
 				<PolishSection word={elemToShow}/>
 				<EnglishSection word={elemToShow}/>

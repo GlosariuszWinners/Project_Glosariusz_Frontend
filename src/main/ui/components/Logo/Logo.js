@@ -12,7 +12,7 @@ const Logo = ({ clearElemToShow }) => {
 	};
 	return (
 		<Center onClick={handleLogoClick} display='flex' flexDirection='column' className='Logo Center'>
-			<Text fontFamily="Ubuntu" fontSize={{ 'sm': '18px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center" color='#fff'>Polsko - Angielski Słownik Biologiczny</Text>
+			<Text as='title' fontFamily='Ubuntu' fontSize={{ 'sm': '18px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center" color='#fff'>Polsko - Angielski Słownik Biologiczny</Text>
 			<Box
 				width='172px'
 				height='172px'
