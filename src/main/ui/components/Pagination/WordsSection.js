@@ -11,7 +11,7 @@ const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) =
 
 
 	return (
-		<Flex bgColor='#fdfdfd' borderTopRadius='50px' marginTop='88px'>
+		<Flex bgColor='#fdfdfd' borderTopRadius='50px' marginTop='88px' as='main'>
 			<Grid
 				templateColumns={{ 'md': 'repeat(2, 1fr)', 'sm': '1fr' }}
 				width='100%'
@@ -49,8 +49,8 @@ const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) =
 								color='#707070'
 								letterSpacing='-0.54px'
 								fontWeight={700}
-								padding="4px"
-								cursor="pointer"
+								padding='4px'
+								cursor='pointer'
 								fontSize={{ 'sm': '27px', 'md': '20px' }}
 							>
 								{elem.polishWord}
