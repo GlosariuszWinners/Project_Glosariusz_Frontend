@@ -2,7 +2,7 @@ import { ArrayField, Datagrid, List, TextField, TextInput } from 'react-admin';
 import { WordDeleteButton, WordEditButton } from '..';
 
 const wordFilters = [
-	<TextInput source="polishWord" placeholder='Wpisz polskie słowo' label='Wyszukaj słowo' alwaysOn key={1}/>,
+	<TextInput source='polishWord' placeholder='Wpisz polskie słowo' label='Wyszukaj słowo' alwaysOn key={1}/>,
 ];
 
 const WordList = (props) => {

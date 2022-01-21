@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const UtilsLoading = ({ apiCalls }) => {
 	return (
-		<Flex justifyContent="center">
+		<Flex justifyContent='center'>
 			{apiCalls.isLoadingPagination === true &&
              <Text fontSize='md' color='gray.400'>Trwa ładowanie, proszę czekać</Text>}
 		</Flex>
