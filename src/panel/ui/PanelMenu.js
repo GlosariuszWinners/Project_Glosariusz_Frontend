@@ -5,8 +5,8 @@ const PanelMenu = (props) => {
 	return (
 		<div>
 			<MenuItemLink
-				to="/words"
-				primaryText="Słownik"
+				to='/words'
+				primaryText='Słownik'
 				leftIcon={<TranslateIcon />}
 				exact
 				{...props}

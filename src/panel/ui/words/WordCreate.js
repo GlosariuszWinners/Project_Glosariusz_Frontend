@@ -5,7 +5,7 @@ const WordCreate = (props) => {
 	return (
 		<Create {...props} title='Dodaj słowo do słownika'>
 			<SimpleForm>
-				<TextInput source='polishWord' validate={validators.validatePolishWord} label="Polskie słowo"/>
+				<TextInput source='polishWord' validate={validators.validatePolishWord} label='Polskie słowo'/>
 				<ArrayInput source='synonyms' label='Angielskie tłumaczenia'>
 					<SimpleFormIterator>
 						<TextInput source='singularForm' label='Forma pojedyncza' validate={validators.validateSynonym}/>

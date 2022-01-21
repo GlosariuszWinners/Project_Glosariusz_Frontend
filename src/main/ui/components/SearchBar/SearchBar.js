@@ -82,7 +82,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 	return (
 		<Box>
 			<Center position='relative' zIndex={2}>
-				<InputGroup ref={searchBarRef} className={isOpen ? 'm-menu -active' : 'm-menu '} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }}  justifySelf="center">
+				<InputGroup ref={searchBarRef} className={isOpen ? 'm-menu -active' : 'm-menu '} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }}  justifySelf='center'>
 					<InputRightElement
 						pointerEvents='none'
 						marginRight='15px' 
@@ -90,23 +90,23 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 						marginBottom='20px'
 						boxSize={{ 'xl': '60px' }}
 					>
-						<Image src={searchIcon} alt="SearchIcon"/>
+						<Image src={searchIcon} alt='SearchIcon'/>
 					</InputRightElement>
 			
 					<Input
 						onKeyPress={handleEnterKeyPressed}
 						onClick={toggle}
 						placeholder={'Wpisz szukane słówko'}
-						bgColor="#fdfdfd"
+						bgColor='#fdfdfd'
 						color='#363636'
-						fontFamily="Ubuntu"
-						fontWeight="300"
-						border="none"
+						fontFamily='Ubuntu'
+						fontWeight='300'
+						border='none'
 						value={inputValue}
 						onChange={inputChanged}
 						// height={'20'}
-						// borderRadius="2em"
-						// p="0 60px 0 30px"
+						// borderRadius='2em'
+						// p='0 60px 0 30px'
 						// fontSize='3xl'
 						height={{ 'xl': '100px' }}
 						borderRadius={{ 'xl': '60px' }}

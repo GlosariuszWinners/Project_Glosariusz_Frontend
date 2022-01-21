@@ -2,13 +2,14 @@ import { Box, Center, Image, Text } from '@chakra-ui/react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { clearElemToShow } from '../../../ducks/actions';
+import { clearElemToShow, setPaginationLetter } from '../../../ducks/actions';
 import leafLogo from '../../static/leaf.svg';
 
 
-const Logo = ({ clearElemToShow }) => {
+const Logo = ({ setPaginationLetter,  clearElemToShow }) => {
 	const handleLogoClick = () => {
 		clearElemToShow();
+		setPaginationLetter('a');
 	};
 	return (
 		<Center display='flex' flexDirection='column' className='Logo Center'>
@@ -48,10 +49,12 @@ const Logo = ({ clearElemToShow }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	clearElemToShow: () => dispatch(clearElemToShow())
+	clearElemToShow: () => dispatch(clearElemToShow()),
+	setPaginationLetter: (letter) => dispatch(setPaginationLetter(letter))
 });
 
 Logo.propTypes = {
+	setPaginationLetter: PropTypes.func,
 	clearElemToShow: PropTypes.func
 };
 

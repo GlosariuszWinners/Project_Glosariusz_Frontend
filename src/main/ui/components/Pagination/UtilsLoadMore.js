@@ -9,9 +9,9 @@ const UtilsLoadMore = ({ nextPaginationUrl, paginationElements, apiCalls, getPag
 		getPaginationPage(nextPaginationUrl);
 	};
 	return (
-		<Flex justifyContent="center">
+		<Flex justifyContent='center'>
 			{(nextPaginationUrl && paginationElements.length !== 0) &&
-				<Button isDisabled={nextPaginationUrl && apiCalls.isLoadingPagination} onClick={() => handleLoadMore()}>
+				<Button onClick={() => handleLoadMore()} isDisabled={nextPaginationUrl && apiCalls.isLoadingPagination}>
 					Załaduj więcej
 				</Button>
 			}

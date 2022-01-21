@@ -15,7 +15,7 @@ const WordEdit = (props) => {
 					</SimpleFormIterator>
 				</ArrayInput>
 				<TextInput source='definition' label='Definicja' multiline={true} validate={validators.validateDefinition}/>
-				<BooleanInput source="reference" label='Referencja'/>
+				<BooleanInput source='reference' label='Referencja'/>
 			</SimpleForm>
 		</Edit>
 	);
