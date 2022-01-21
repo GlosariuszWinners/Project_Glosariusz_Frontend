@@ -16,7 +16,7 @@ export const getPaginationPage = (url) => (dispatch) => dispatch(createAction({
 }));
 
 export const getSuggestions = (polishWord) => (dispatch) => dispatch(createAction({
-	endpoint: `http://localhost:8080/api/words?polishWord=${polishWord}`,
+	endpoint: `${process.env.REACT_APP_API_URL}/words?polishWord=${polishWord}`,
 	method: 'GET',
 	headers: {
 		'Accept': 'application/json',
@@ -30,7 +30,7 @@ export const getSuggestions = (polishWord) => (dispatch) => dispatch(createActio
 }));
 
 export const getSingleWord = (id) => dispatch => dispatch(createAction({
-	endpoint: `http://localhost:8080/api/words/${id}`,
+	endpoint: `${process.env.REACT_APP_API_URL}/api/words/${id}`,
 	method: 'GET',
 	headers: {
 		'Accept': 'application/json',

@@ -10,7 +10,6 @@ const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) =
 		setElemToShow(elem);
 	};
 
-
 	return (
 		<Flex bgColor='#fdfdfd' borderTopRadius='50px' marginTop='88px' as='main'>
 			<Grid

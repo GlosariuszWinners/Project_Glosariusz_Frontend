@@ -14,7 +14,7 @@ const Pagination = ({ nextPaginationUrl, paginationLetter, paginationElements, g
 	};
 	useEffect(() => {
 		clearPaginationElements();
-		getPaginationPage(`http://localhost:8080/api/words?polishWord=${paginationLetter}`);
+		getPaginationPage(`${process.env.REACT_APP_API_URL}/words?polishWord=${paginationLetter}`);
 	}, [paginationLetter]);
 
 	return(
