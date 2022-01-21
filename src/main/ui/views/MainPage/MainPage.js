@@ -1,25 +1,17 @@
 import { Logo, SearchBar, Navbar } from '../..';
 import { Box } from '@chakra-ui/react';
-import { Pagination } from '../..';
-import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
-import { apiMiddleware } from 'redux-api-middleware';
-import thunk from 'redux-thunk';
-import { logger } from '../../../ducks/middleware/logger';
-import reducers from '../../../ducks/reducers/index';
-
-const store = createStore(reducers, applyMiddleware(apiMiddleware, thunk, logger));
+import { Pagination, ProviderWrapper } from '../..';
 
 const MainPage = () => {
 	return (
-		<Provider store={store}>
+		<ProviderWrapper>
 			<Navbar/>
 			<Box display='grid' justifyContent='center' backgroundColor='#d0e8f2' position='relative' as='header'>
 				<Logo/>
 				<SearchBar/>
 			</Box>
 			<Pagination/>
-		</Provider>
+		</ProviderWrapper>
 	);
 };
 export default MainPage;
