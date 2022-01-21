@@ -2,13 +2,13 @@ import { Box, Flex } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { WordDetails, UtilsSection } from '../../';
+import { UtilsSection } from '../../';
 import { clearPaginationElements, getPaginationPage, setPaginationLetter } from '../../../ducks/actions';
 import { PaginationAlphabet, NoWordsFound, ApiError, WordsSection } from '../../';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
-const Pagination = ({ nextPaginationUrl, elemToShow, paginationLetter, paginationElements, getPaginationPage, apiCalls, clearPaginationElements }) => {
+const Pagination = ({ nextPaginationUrl, paginationLetter, paginationElements, getPaginationPage, apiCalls, clearPaginationElements }) => {
 	const handleLoadMore = () => {
 		getPaginationPage(nextPaginationUrl);
 	};
@@ -17,16 +17,6 @@ const Pagination = ({ nextPaginationUrl, elemToShow, paginationLetter, paginatio
 		getPaginationPage(`http://localhost:8080/api/words?polishWord=${paginationLetter}`);
 	}, [paginationLetter]);
 
-	if (elemToShow){
-		return(
-			<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
-				<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '60vw' }} zIndex={2}>
-					<PaginationAlphabet/>
-					<WordDetails/>
-				</Box>
-			</Flex>
-		);
-	}
 	return(
 		<InfiniteScroll
 			dataLength={paginationElements.length}
@@ -55,7 +45,6 @@ const Pagination = ({ nextPaginationUrl, elemToShow, paginationLetter, paginatio
 const mapStateToProps = (state) => ({
 	paginationElements: state.paginationElements,
 	apiCalls: state.apiCalls,
-	elemToShow: state.elemToShow,
 	paginationLetter: state.paginationLetter,
 	nextPaginationUrl: state.nextPaginationUrl,
 });
@@ -73,7 +62,6 @@ Pagination.propTypes = {
 	getPaginationPage: PropTypes.func,
 	apiCalls: PropTypes.object,
 	clearPaginationElements: PropTypes.func,
-	elemToShow: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

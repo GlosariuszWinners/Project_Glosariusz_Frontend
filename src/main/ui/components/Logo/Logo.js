@@ -1,6 +1,7 @@
 import { Box, Center, Image, Text } from '@chakra-ui/react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { clearElemToShow } from '../../../ducks/actions';
 import leafLogo from '../../static/leaf.svg';
 
@@ -8,11 +9,14 @@ import leafLogo from '../../static/leaf.svg';
 const Logo = ({ clearElemToShow }) => {
 	const handleLogoClick = () => {
 		clearElemToShow();
-		console.log('Closing', clearElemToShow);
 	};
 	return (
-		<Center onClick={handleLogoClick} display='flex' flexDirection='column' className='Logo Center'>
-			<Text as='title' fontFamily='Ubuntu' fontSize={{ 'sm': '18px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center" color='#fff'>Polsko - Angielski Słownik Biologiczny</Text>
+		<Center display='flex' flexDirection='column' className='Logo Center'>
+			<Link onClick={handleLogoClick} to="/">
+				<Text as='h1' fontFamily='Ubuntu' fontSize={{ 'sm': '18px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center" color='#fff' cursor='pointer'>
+					Polsko - Angielski Słownik Biologiczny
+				</Text>
+			</Link>
 			<Box
 				width='172px'
 				height='172px'
@@ -31,11 +35,13 @@ const Logo = ({ clearElemToShow }) => {
 					}
 				}
 			>
-				<Box height='100%' bgColor='#fdfdfd' borderRadius='50%' position='relative' zIndex={2} onClick={handleLogoClick} cursor='pointer'>
-					<Center height='100%'>
-						<Image src={leafLogo}/>
-					</Center>
-				</Box>
+				<Link onClick={handleLogoClick} to="/">
+					<Box height='100%' bgColor='#fdfdfd' borderRadius='50%' position='relative' zIndex={2} cursor='pointer'>
+						<Center height='100%'>
+							<Image src={leafLogo}/>
+						</Center>
+					</Box>
+				</Link>
 			</Box>
 		</Center>
 	);

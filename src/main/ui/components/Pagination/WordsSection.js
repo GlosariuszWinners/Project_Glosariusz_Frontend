@@ -1,6 +1,7 @@
 import { Center, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setElemToShow } from '../../../ducks/actions';
 
 
@@ -43,18 +44,19 @@ const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) =
 				{paginationElements.map(elem =>
 					(
 						<GridItem key={elem.id} alignSelf='center' overflow='hidden'>
-							<Text
-								as='span'
-								onClick={() => handleElemButtonClick(elem)}
-								color='#707070'
-								letterSpacing='-0.54px'
-								fontWeight={700}
-								padding='4px'
-								cursor='pointer'
-								fontSize={{ 'sm': '27px', 'md': '20px' }}
-							>
-								{elem.polishWord}
-							</Text>
+							<Link onClick={() => handleElemButtonClick(elem)} to={`/slownik/${elem.id}`}>
+								<Text
+									as='span'
+									color='#707070'
+									letterSpacing='-0.54px'
+									fontWeight={700}
+									padding='4px'
+									cursor='pointer'
+									fontSize={{ 'sm': '27px', 'md': '20px' }}
+								>
+									{elem.polishWord}
+								</Text>
+							</Link>
 						</GridItem>
 					)
 				)}
