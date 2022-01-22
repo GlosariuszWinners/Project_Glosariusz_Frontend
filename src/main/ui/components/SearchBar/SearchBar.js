@@ -4,11 +4,15 @@ import { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import searchIcon from '../../static/searchIcon.png';
-import { getSuggestions, clearSuggestions, setElemToShow } from '../../../ducks/actions';
 import listenForOutsideClick from './listen-for-outside-clicks';
+import { suggestionsService } from '../../../ducks/suggestions/operations';
+import { useHistory } from 'react-router';
+import { wordDetailsService } from '../../../ducks/wordDetails/operations';
 
-const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, suggestions }) => {
+const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSuggestions, suggestions }) => {
+	const history = useHistory();
 	const searchBarRef = useRef(null);
+	console.log(suggestions);
 	const [listening, setListening] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(true);
@@ -18,7 +22,8 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 
 	const handleSuggestionClick = (elem) => {
 		setInputValue(elem.polishWord);
-		setElemToShow(elem);
+		setWordDetails(elem);
+		history.push(`/slownik/${elem.id}`);
 	};
 
 	const inputChanged = e => {
@@ -35,15 +40,17 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 		setTimer(newTimer);
 	};
 	const getResultsToRender = () => {
-		if(inputValue.length > 2 && !apiCalls.isLoadingSuggestions && suggestions.length > 0){
+		if(inputValue.length > 2 && !loading && suggestions.length > 0){
 			return(
-				suggestions.slice(0,6).map((suggestion, index) => 
+				suggestions.slice(0,6).map((suggestion, index) => (
 					<ListItem key={index} onClick={() => handleSuggestionClick(suggestion)} p={3} borderBottom={'2px solid #fdfdfd'} _hover={{ bg: '#fdfdfd' }}>
 						{suggestion.polishWord}
-					</ListItem>)
+					</ListItem>
+				)
+				)
 			);
 		}
-		if(apiCalls.isLoadingSuggestions){
+		if(loading){
 			return(
 				<ListItem p={3} borderBottom={'2px solid #fdfdfd'}>
 					<Spinner/>&nbsp;&nbsp;
@@ -51,7 +58,7 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 				</ListItem>
 			);
 		}
-		if(apiCalls.isErrorSuggestions){
+		if(error){
 			return(
 				<ListItem p={3} borderBottom={'2px solid #fdfdfd'}>
 						Wystąpił problem, spróbuj ponownie
@@ -135,19 +142,21 @@ const SearchBar = ({ apiCalls, setElemToShow, getSuggestions, clearSuggestions, 
 	);
 };
 const mapStateToProps = (state) => ({
-	suggestions: state.suggestions,
-	apiCalls: state.apiCalls
+	suggestions: state.suggestions.data,
+	loading: state.suggestions.loading,
+	error: state.suggestions.error,
 });
 const mapDispatchToProps = (dispatch) => ({
-	getSuggestions: (inputValue) => dispatch(getSuggestions(inputValue)),
-	clearSuggestions: () => dispatch(clearSuggestions()),
-	setElemToShow: (payload) => dispatch(setElemToShow(payload))
+	getSuggestions: (inputValue) => dispatch(suggestionsService.get(inputValue)),
+	setWordDetails: (payload) => dispatch(wordDetailsService.set(payload)),
+	clearSuggestions: () => dispatch(suggestionsService.clear),
 });
 SearchBar.propTypes = {
 	suggestions: PropTypes.array,
+	loading: PropTypes.bool,
+	error: PropTypes.string,
 	getSuggestions: PropTypes.func,
+	setWordDetails: PropTypes.func,
 	clearSuggestions: PropTypes.func,
-	setElemToShow: PropTypes.func,
-	apiCalls: PropTypes.object
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

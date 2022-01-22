@@ -2,14 +2,17 @@ import { Box, Center, Image, Text } from '@chakra-ui/react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { clearElemToShow, setPaginationLetter } from '../../../ducks/actions';
+import { wordsService } from '../../../ducks/words/operations';
 import leafLogo from '../../static/leaf.svg';
+import { wordDetailsService } from './../../../ducks/wordDetails/operations';
+// import { useHistory } from 'react-router';
 
-
-const Logo = ({ setPaginationLetter,  clearElemToShow }) => {
+const Logo = ({ wordDetailsId, paginationLetter, getWordsByLetter, clearWordDetails, clearWords }) => {
 	const handleLogoClick = () => {
-		clearElemToShow();
-		setPaginationLetter('a');
+		if(wordDetailsId) clearWordDetails();
+		clearWords();
+		// to prevent missing letters for 'a'
+		if(paginationLetter === 'a') getWordsByLetter(paginationLetter);
 	};
 	return (
 		<Center display='flex' flexDirection='column' className='Logo Center'>
@@ -48,14 +51,23 @@ const Logo = ({ setPaginationLetter,  clearElemToShow }) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	clearElemToShow: () => dispatch(clearElemToShow()),
-	setPaginationLetter: (letter) => dispatch(setPaginationLetter(letter))
+const mapStateToProps = (state) => ({
+	wordDetailsId: state.wordDetails.data?.id,
+	paginationLetter: state.words.paginationLetter,
 });
 
-Logo.propTypes = {
-	setPaginationLetter: PropTypes.func,
-	clearElemToShow: PropTypes.func
+const mapDispatchToProps = {
+	clearWordDetails: wordDetailsService.clear,
+	clearWords: wordsService.clear,
+	getWordsByLetter: wordsService.getByLetter,
 };
 
-export default connect(null, mapDispatchToProps)(Logo);
+Logo.propTypes = {
+	wordDetailsId: PropTypes.string,
+	paginationLetter: PropTypes.string,
+	getWordsByLetter: PropTypes.func,
+	clearWordDetails: PropTypes.func,
+	clearWords: PropTypes.func,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Logo);

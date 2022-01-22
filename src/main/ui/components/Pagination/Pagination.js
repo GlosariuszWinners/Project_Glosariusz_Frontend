@@ -3,36 +3,36 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { UtilsSection } from '../../';
-import { clearPaginationElements, getPaginationPage, setPaginationLetter } from '../../../ducks/actions';
 import { PaginationAlphabet, NoWordsFound, ApiError, WordsSection } from '../../';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { wordsService } from '../../../ducks/words/operations';
 
-
-const Pagination = ({ nextPaginationUrl, paginationLetter, paginationElements, getPaginationPage, apiCalls, clearPaginationElements }) => {
+const Pagination = ({ words, loading, error, nextPaginationUrl, getWordsByLetter, getWordsByUrl, paginationLetter, clearWords }) => {
 	const handleLoadMore = () => {
-		getPaginationPage(nextPaginationUrl);
+		getWordsByUrl(nextPaginationUrl);
 	};
+
 	useEffect(() => {
-		clearPaginationElements();
-		getPaginationPage(`${process.env.REACT_APP_API_URL}/words?polishWord=${paginationLetter}`);
+		clearWords();
+		getWordsByLetter(paginationLetter);
 	}, [paginationLetter]);
 
 	return(
 		<InfiniteScroll
-			dataLength={paginationElements.length}
+			dataLength={words.length}
 			next={handleLoadMore}
 			hasMore={nextPaginationUrl}
 		>
 			<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
 				<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '60vw' }} zIndex={2}>
 					<PaginationAlphabet/>
-					{!apiCalls.isLoadingPagination && !apiCalls.isErrorPagination && paginationElements.length === 0 &&
+					{!loading && !error && words.length === 0 &&
 					<NoWordsFound/>
 					}
-					{apiCalls.isErrorPagination &&
+					{error &&
 					<ApiError/>
 					}
-					{paginationElements.length > 0 &&
+					{words.length > 0 &&
 					<WordsSection/>
 					}
 					<UtilsSection/>
@@ -43,25 +43,28 @@ const Pagination = ({ nextPaginationUrl, paginationLetter, paginationElements, g
 };
 
 const mapStateToProps = (state) => ({
-	paginationElements: state.paginationElements,
-	apiCalls: state.apiCalls,
-	paginationLetter: state.paginationLetter,
-	nextPaginationUrl: state.nextPaginationUrl,
+	words: state.words.words,
+	loading: state.words.loading,
+	error: state.words.error,
+	paginationLetter: state.words.paginationLetter,
+	nextPaginationUrl: state.words.nextPaginationUrl,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	getPaginationPage: (url) => dispatch(getPaginationPage(url)),
-	clearPaginationElements: () => dispatch(clearPaginationElements()),
-	setPaginationLetter: (letter) => dispatch(setPaginationLetter(letter))
+	getWordsByUrl: (url) => dispatch(wordsService.getByUrl(url)),
+	getWordsByLetter: (letter) => dispatch(wordsService.getByLetter(letter)),
+	clearWords: wordsService.clear,
 });
 
 Pagination.propTypes = {
-	paginationElements: PropTypes.array,
+	words: PropTypes.array,
+	loading: PropTypes.bool,
+	error: PropTypes.string,
 	nextPaginationUrl: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 	paginationLetter: PropTypes.string,
-	getPaginationPage: PropTypes.func,
-	apiCalls: PropTypes.object,
-	clearPaginationElements: PropTypes.func,
+	getWordsByUrl: PropTypes.func,
+	getWordsByLetter: PropTypes.func,
+	clearWords: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

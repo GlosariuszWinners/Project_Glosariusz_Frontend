@@ -2,12 +2,12 @@ import { Center, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setElemToShow } from '../../../ducks/actions';
+import { wordDetailsService } from './../../../ducks/wordDetails/operations';
 
 
-const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) => {
+const WordsSection = ({ paginationLetter, setWordDetails, words }) => {
 	const handleElemButtonClick = (elem) => {
-		setElemToShow(elem);
+		setWordDetails(elem);
 	};
 
 	return (
@@ -40,7 +40,7 @@ const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) =
 					</Center>
 				</GridItem>
 				<GridItem></GridItem>
-				{paginationElements.map(elem =>
+				{words.map(elem =>
 					(
 						<GridItem key={elem.id} alignSelf='center' overflow='hidden'>
 							<Link onClick={() => handleElemButtonClick(elem)} to={`/slownik/${elem.id}`}>
@@ -64,19 +64,20 @@ const WordsSection = ({ paginationLetter, setElemToShow, paginationElements }) =
 	);
 };
 
-WordsSection.propTypes = {
-	setElemToShow: PropTypes.func,
-	paginationElements: PropTypes.array,
-	paginationLetter: PropTypes.string,
-};
 
 const mapStateToProps = (state) => ({
-	paginationElements: state.paginationElements,
-	paginationLetter: state.paginationLetter,
+	words: state.words.words,
+	paginationLetter: state.words.paginationLetter,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	setElemToShow: (payload) => dispatch(setElemToShow(payload)),
+	setWordDetails: (payload) => dispatch(wordDetailsService.set(payload)),
 });
+
+WordsSection.propTypes = {
+	setWordDetails: PropTypes.func,
+	words: PropTypes.array,
+	paginationLetter: PropTypes.string,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(WordsSection);

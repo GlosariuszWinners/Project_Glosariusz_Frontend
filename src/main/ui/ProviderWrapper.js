@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
-import { logger } from '../ducks/middleware/logger';
-import reducers from '../ducks/reducers';
+import logger from 'redux-logger';
+import reducers from '../ducks/index';
 import thunk from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
 import { Provider } from 'react-redux';
