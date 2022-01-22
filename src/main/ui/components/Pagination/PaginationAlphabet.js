@@ -1,14 +1,15 @@
 import { Box, Button } from '@chakra-ui/react';
-import { polishAlphabeth } from './utils/alphabeth';
+import { polishAlphabet } from './utils/alphabet';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { clearElemToShow, clearPaginationElements, setPaginationLetter } from '../../../ducks/actions';
 import { Link } from 'react-router-dom';
+import { wordDetailsService } from '../../../ducks/wordDetails/operations';
+import { wordsService } from '../../../ducks/words/operations';
 
-const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPaginationLetter, paginationLetter }) => {
+const PaginationAlphabet = ({ clearWordDetails, clearWords, setPaginationLetter, paginationLetter }) => {
 	const handleChangePaginationLetter = (letter) => {
-		clearPaginationElements();
-		clearElemToShow();
+		clearWords();
+		clearWordDetails();
 		setPaginationLetter(letter);
 	};
 	return (
@@ -21,7 +22,7 @@ const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPagin
 			marginBottom={5}
 			as='section'
 		>
-			{polishAlphabeth.map(letter => (
+			{polishAlphabet.map(letter => (
 				<Link to="/" key={letter}>
 					<Button
 						bgColor={letter === paginationLetter ? '#f6ae2d' : 'transparent'}
@@ -49,18 +50,18 @@ const PaginationAlphabet = ({ clearElemToShow, clearPaginationElements, setPagin
 };
 
 const mapStateToProps = (state) => ({
-	paginationLetter: state.paginationLetter
+	paginationLetter: state.words.paginationLetter
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	clearElemToShow: () => dispatch(clearElemToShow()),
-	clearPaginationElements: () => dispatch(clearPaginationElements()),
-	setPaginationLetter: (letter) => dispatch(setPaginationLetter(letter))
+	clearWordDetails: () => dispatch(wordDetailsService.clear),
+	clearWords: () => dispatch(wordsService.clear),
+	setPaginationLetter: (letter) => dispatch(wordsService.set(letter))
 });
 
 PaginationAlphabet.propTypes = {
-	clearElemToShow: PropTypes.func,
-	clearPaginationElements: PropTypes.func,
+	clearWordDetails: PropTypes.func,
+	clearWords: PropTypes.func,
 	setPaginationLetter: PropTypes.func,
 	paginationLetter: PropTypes.string,
 };

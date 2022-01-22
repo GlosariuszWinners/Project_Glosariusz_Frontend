@@ -13,7 +13,6 @@ export { default as ApiError } from './components/Pagination/ApiError';
 export { default as WordsSection } from './components/Pagination/WordsSection';
 export { default as UtilsSection } from './components/Pagination/UtilsSection';
 export { default as UtilsLoading } from './components/Pagination/UtilsLoading';
-export { default as UtilsLoadMore } from './components/Pagination/UtilsLoadMore';
 
 export { default as MainPage } from './views/MainPage/MainPage';
 export { default as DetailPage } from './views/DetailPage/DetailPage';

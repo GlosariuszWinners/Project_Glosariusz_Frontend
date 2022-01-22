@@ -17,7 +17,7 @@ const NoWordsFound = ({ paginationLetter }) => {
 };
 
 const mapStateToProps = (state) => ({
-	paginationLetter: state.paginationLetter
+	paginationLetter: state.words.paginationLetter
 });
 
 NoWordsFound.propTypes = {

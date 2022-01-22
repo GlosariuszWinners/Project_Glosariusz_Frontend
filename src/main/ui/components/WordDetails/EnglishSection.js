@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import ukFlag from '../../static/uk-flag.svg';
 import { connect } from 'react-redux';
 
-const EnglishSection = ({ elemToShow }) => {
+const EnglishSection = ({ wordDetails }) => {
 	return (
 		<Flex width='100%' height='100%' paddingLeft={{ 'lg': '40px' }} paddingRight={{ 'lg': '40px' }} paddingBottom='20px' as='section'>
 			<Grid templateColumns={{ 'lg': '36px 1fr 1fr', 'sm': '36px 1fr 1fr' }} gap={4} alignItems='center' justifyItems={{ 'sm': 'center', 'lg': 'flex-start' }}>
-				{elemToShow.synonyms.map((synonym, index) => (
+				{wordDetails.synonyms && wordDetails.synonyms.map((synonym, index) => (
 					<React.Fragment key={index}>
 						{index === 0 ? (
 							<GridItem>
@@ -34,11 +34,11 @@ const EnglishSection = ({ elemToShow }) => {
 };
 
 const mapStateToProps = (state) => ({
-	elemToShow: state.elemToShow,
+	wordDetails: state.wordDetails.data,
 });
 
 EnglishSection.propTypes = {
-	elemToShow: PropTypes.object,
+	wordDetails: PropTypes.object,
 };
 
 
