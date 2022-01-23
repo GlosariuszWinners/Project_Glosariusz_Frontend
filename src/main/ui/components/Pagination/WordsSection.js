@@ -1,13 +1,15 @@
 import { Center, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { wordDetailsService } from './../../../ducks/wordDetails/operations';
+import { useHistory } from 'react-router';
 
 
 const WordsSection = ({ paginationLetter, setWordDetails, words }) => {
+	const history = useHistory();
 	const handleElemButtonClick = (elem) => {
 		setWordDetails(elem);
+		history.push(`/slownik/${elem.id}`);
 	};
 
 	return (
@@ -43,19 +45,18 @@ const WordsSection = ({ paginationLetter, setWordDetails, words }) => {
 				{words.map(elem =>
 					(
 						<GridItem key={elem.id} alignSelf='center' overflow='hidden'>
-							<Link onClick={() => handleElemButtonClick(elem)} to={`/slownik/${elem.id}`}>
-								<Text
-									as='span'
-									color='#707070'
-									letterSpacing='-0.54px'
-									fontWeight={700}
-									padding='4px'
-									cursor='pointer'
-									fontSize={{ 'sm': '27px', 'md': '20px' }}
-								>
-									{elem.polishWord}
-								</Text>
-							</Link>
+							<Text
+								onClick={() => handleElemButtonClick(elem)}
+								as='span'
+								color='#707070'
+								letterSpacing='-0.54px'
+								fontWeight={700}
+								padding='4px'
+								cursor='pointer'
+								fontSize={{ 'sm': '27px', 'md': '20px' }}
+							>
+								{elem.polishWord}
+							</Text>
 						</GridItem>
 					)
 				)}

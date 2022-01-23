@@ -7,12 +7,12 @@ import leafLogo from '../../static/leaf.svg';
 import { wordDetailsService } from './../../../ducks/wordDetails/operations';
 // import { useHistory } from 'react-router';
 
-const Logo = ({ wordDetailsId, paginationLetter, getWordsByLetter, clearWordDetails, clearWords }) => {
+const Logo = ({ shouldFetchWords = true, wordDetailsId, paginationLetter, getWordsByLetter, clearWordDetails, clearWords }) => {
 	const handleLogoClick = () => {
 		if(wordDetailsId) clearWordDetails();
 		clearWords();
-		// to prevent missing letters for 'a'
-		if(paginationLetter === 'a') getWordsByLetter(paginationLetter);
+		// to prevent missing letters for 'a' and component double fetch
+		if(paginationLetter === 'a' && !shouldFetchWords) getWordsByLetter(paginationLetter);
 	};
 	return (
 		<Center display='flex' flexDirection='column' className='Logo Center'>
@@ -63,6 +63,7 @@ const mapDispatchToProps = {
 };
 
 Logo.propTypes = {
+	shouldFetchWords: PropTypes.bool,
 	wordDetailsId: PropTypes.string,
 	paginationLetter: PropTypes.string,
 	getWordsByLetter: PropTypes.func,

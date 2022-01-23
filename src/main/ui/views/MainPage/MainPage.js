@@ -7,7 +7,7 @@ const MainPage = () => {
 		<ProviderWrapper>
 			<Navbar/>
 			<Box display='grid' justifyContent='center' backgroundColor='#d0e8f2' position='relative' as='header'>
-				<Logo/>
+				<Logo shouldFetchWords={false}/>
 				<SearchBar/>
 			</Box>
 			<Pagination/>

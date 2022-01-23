@@ -3,13 +3,10 @@ import { polishAlphabet } from './utils/alphabet';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { wordDetailsService } from '../../../ducks/wordDetails/operations';
 import { wordsService } from '../../../ducks/words/operations';
 
-const PaginationAlphabet = ({ clearWordDetails, clearWords, setPaginationLetter, paginationLetter }) => {
+const PaginationAlphabet = ({ setPaginationLetter, paginationLetter }) => {
 	const handleChangePaginationLetter = (letter) => {
-		clearWords();
-		clearWordDetails();
 		setPaginationLetter(letter);
 	};
 	return (
@@ -54,14 +51,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	clearWordDetails: () => dispatch(wordDetailsService.clear),
-	clearWords: () => dispatch(wordsService.clear),
 	setPaginationLetter: (letter) => dispatch(wordsService.set(letter))
 });
 
 PaginationAlphabet.propTypes = {
-	clearWordDetails: PropTypes.func,
-	clearWords: PropTypes.func,
 	setPaginationLetter: PropTypes.func,
 	paginationLetter: PropTypes.string,
 };

@@ -12,11 +12,10 @@ import { wordDetailsService } from '../../../ducks/wordDetails/operations';
 const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSuggestions, suggestions }) => {
 	const history = useHistory();
 	const searchBarRef = useRef(null);
-	console.log(suggestions);
 	const [listening, setListening] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(true);
-	useEffect(listenForOutsideClick(listening, setListening, searchBarRef, setIsOpen));
+	useEffect(() => listenForOutsideClick(listening, setListening, searchBarRef, setIsOpen), []);
 	const [inputValue, setInputValue] = useState('');
 	const [timer, setTimer] = useState(null);
 

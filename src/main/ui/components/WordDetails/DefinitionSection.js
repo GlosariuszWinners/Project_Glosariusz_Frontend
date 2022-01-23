@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const DefinitionSection = ({ wordDefinition }) => {
 	return (
-		<Box bgColor='#fdfdfd' borderRadius='20px' p={50, 50, 50, 50} as='section'>
+		<Box bgColor='#fdfdfd' borderRadius='20px' padding={{ 'sm': '20px', 'lg': '50px' }} as='section'>
 			<Text fontFamily='Ubuntu' fontSize='25px' letterSpacing='-0.5px' color='#363636'>
 				{wordDefinition}
 			</Text>

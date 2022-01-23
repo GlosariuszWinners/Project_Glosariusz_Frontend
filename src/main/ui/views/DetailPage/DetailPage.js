@@ -10,7 +10,7 @@ const DetailPage = () => {
 				<SearchBar/>
 			</Box>
 			<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
-				<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '60vw' }} zIndex={2}>
+				<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '70vw', '2xl': '60vw' }} zIndex={2}>
 					<PaginationAlphabet/>
 					<WordDetails/>
 				</Box>
