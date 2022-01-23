@@ -24,7 +24,7 @@ const Pagination = ({ words, loading, error, nextPaginationUrl, getWordsByLetter
 			hasMore={nextPaginationUrl}
 		>
 			<Flex flexDirection='column' alignItems='center' bgColor='#d0e8f2'>
-				<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '60vw' }} zIndex={2}>
+				<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '70vw', '2xl': '60vw' }} zIndex={2}>
 					<PaginationAlphabet/>
 					{!loading && !error && words.length === 0 &&
 					<NoWordsFound/>

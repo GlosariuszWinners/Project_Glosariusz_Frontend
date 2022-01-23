@@ -1,4 +1,4 @@
-import { Center, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react';
+import { Center, Grid, GridItem, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ukFlag from '../../static/uk-flag.svg';
@@ -6,30 +6,40 @@ import { connect } from 'react-redux';
 
 const EnglishSection = ({ wordDetails }) => {
 	return (
-		<Flex width='100%' height='100%' paddingLeft={{ 'lg': '40px' }} paddingRight={{ 'lg': '40px' }} paddingBottom='20px' as='section'>
-			<Grid templateColumns={{ 'lg': '36px 1fr 1fr', 'sm': '36px 1fr 1fr' }} gap={4} alignItems='center' justifyItems={{ 'sm': 'center', 'lg': 'flex-start' }}>
+		<Grid
+			templateColumns={{ 'sm': '36px 1fr' }}
+			paddingLeft={{ 'sm': '20px', 'lg': '40px' }}
+			paddingRight={{ 'sm': '5px', 'lg': '40px' }}
+			paddingBottom='20px' gap={4}
+			alignItems='center'
+			justifyItems={{ 'sm': 'center', 'lg': 'flex-start' }}
+			as='section'
+		>
+			<GridItem>
+				<Center>
+					<Image src={ukFlag}/>
+				</Center>
+			</GridItem>
+			<Grid width='100%' display='grid' templateColumns={{ 'sm': '1fr', 'lg': '1fr 1fr' }} gridGap='10px' wordBreak='break-word'>
 				{wordDetails.synonyms && wordDetails.synonyms.map((synonym, index) => (
 					<React.Fragment key={index}>
-						{index === 0 ? (
-							<GridItem>
-								<Center>
-									<Image src={ukFlag}/>
-								</Center>
-							</GridItem>) : <GridItem></GridItem>}
+
 						<GridItem>
 							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={700} letterSpacing='-0.5px' color='#fdfdfd'>
 								{synonym?.singularForm && synonym.singularForm.toUpperCase()}
 							</Text>
 						</GridItem>
 						<GridItem>
-							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={700} letterSpacing='-0.5px' color='#fdfdfd'>
-								{synonym?.pluralCountable || synonym?.pluralUncountable ? 'l.mn.' : ''} {synonym?.pluralCountable && synonym.pluralCountable.toUpperCase()}{synonym?.pluralUncountable && `, ${synonym?.pluralUncountable.toUpperCase()}`}
+							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={500} letterSpacing='-0.5px' color='#fdfdfd'>
+								{synonym?.pluralCountable || synonym?.pluralUncountable
+									? `l.mn. ${synonym?.pluralCountable ? synonym.pluralCountable.toUpperCase() : ''} ${synonym?.pluralUncountable ? synonym?.pluralUncountable.toUpperCase() : ''}`
+									: 'l.mn -'} 
 							</Text>
 						</GridItem>
 					</React.Fragment>
 				))}
 			</Grid>
-		</Flex>
+		</Grid>
 	);
 };
 
