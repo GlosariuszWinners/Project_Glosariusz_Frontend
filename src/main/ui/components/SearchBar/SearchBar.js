@@ -10,12 +10,13 @@ import { useHistory } from 'react-router';
 import { wordDetailsService } from '../../../ducks/wordDetails/operations';
 
 const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSuggestions, suggestions }) => {
+	const [currentSelect, setCurrentSelect] = useState(0);
 	const history = useHistory();
 	const searchBarRef = useRef(null);
 	const [listening, setListening] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 	const toggle = () => setIsOpen(true);
-	useEffect(() => listenForOutsideClick(listening, setListening, searchBarRef, setIsOpen), []);
+	useEffect(() => listenForOutsideClick(listening, setListening, searchBarRef, setIsOpen));
 	const [inputValue, setInputValue] = useState('');
 	const [timer, setTimer] = useState(null);
 
@@ -42,7 +43,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 		if(inputValue.length > 2 && !loading && suggestions.length > 0){
 			return(
 				suggestions.slice(0,6).map((suggestion, index) => (
-					<ListItem key={index} onClick={() => handleSuggestionClick(suggestion)} p={3} borderBottom={'2px solid #fdfdfd'} _hover={{ bg: '#fdfdfd' }}>
+					<ListItem width={{ 'xl': '52vw' }} key={index} onClick={() => handleSuggestionClick(suggestion)} p={3} borderBottom={'2px solid #f6ae2d'} _hover={{ bg: '#f6ae2d' }} bg={ currentSelect === index ? '#f6ae2d' : '#fdfdfd' }>
 						{suggestion.polishWord}
 					</ListItem>
 				)
@@ -70,20 +71,34 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 			</ListItem>
 		);
 	};
+
 	const renderSuggestions = () => (
-		<List spacing={3} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }} bg={'gray.100'} borderRadius={{ 'xl': '60px' }} p={{ 'xl': '25px 25px 25px 60px' }} zIndex={2} position='relative'>
+		<List spacing={3} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }} bg={'#fdfdfd'} _hover={{}} borderRadius={{ 'xl': '60px' }} p={{ 'xl': '25px 25px 25px 60px' }} zIndex={2} position='relative'>
 			{/* tutaj mozna dodac flagi i synonim albo gdy sa dwa synonimy po angielsku to dodac ikonki i 1 z kilku definicji */}
 			{getResultsToRender()}	
 		</List>
 	);
-	
-	const handleEnterKeyPressed = (event) => {
+
+	const handleKeyPressed = (event) => {
 		if(event.key === 'Enter'){
 			setIsOpen(false);
-			suggestions.length > 0 && handleSuggestionClick(suggestions[0]);	
+			suggestions.length > 0 && handleSuggestionClick(suggestions[currentSelect]);	
 		}
 	};
 
+
+	const handleKeyDown = (event) => {
+		if(event.key === 'ArrowDown' || event.key === 'ArrowUp'){
+			event.preventDefault();
+		}
+		if(event.key === 'ArrowDown' && suggestions.length > 0 && suggestions.length > currentSelect + 1){
+			setCurrentSelect(currentSelect + 1);
+		}
+		if(event.key === 'ArrowUp' && suggestions.length > 0 &&  currentSelect > 0){
+			setCurrentSelect(currentSelect - 1);
+		}
+		
+	};
 
 	return (
 		<Box>
@@ -100,7 +115,9 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 					</InputRightElement>
 			
 					<Input
-						onKeyPress={handleEnterKeyPressed}
+						id='mainInput'
+						onKeyPress={handleKeyPressed}
+						onKeyDown={handleKeyDown}
 						onClick={toggle}
 						placeholder={'Wpisz szukane słówko'}
 						bgColor='#fdfdfd'
@@ -110,6 +127,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 						border='none'
 						value={inputValue}
 						onChange={inputChanged}
+						
 						// height={'20'}
 						// borderRadius='2em'
 						// p='0 60px 0 30px'
