@@ -43,7 +43,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 		if(inputValue.length > 2 && !loading && suggestions.length > 0){
 			return(
 				suggestions.slice(0,6).map((suggestion, index) => (
-					<ListItem width={{ 'xl': '52vw' }} key={index} onClick={() => handleSuggestionClick(suggestion)} p={3} borderBottom={'2px solid #f6ae2d'} _hover={{ bg: '#f6ae2d' }} bg={ currentSelect === index ? '#f6ae2d' : '#fdfdfd' }>
+					<ListItem width={ '100%' } key={index} onClick={() => handleSuggestionClick(suggestion)} p={3} letterSpacing={'0.5px'} borderRadius={'full'} border={'2px solid #f6ae2d'} _hover={{ bg: '#fac564' }} bg={ currentSelect === index ? '#f6ae2d' : '#fdfdfd' } fontFamily={'Ubuntu'} fontWeight={'light'}>
 						{suggestion.polishWord}
 					</ListItem>
 				)
@@ -73,8 +73,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 	};
 
 	const renderSuggestions = () => (
-		<List spacing={3} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }} bg={'#fdfdfd'} _hover={{}} borderRadius={{ 'xl': '60px' }} p={{ 'xl': '25px 25px 25px 60px' }} zIndex={2} position='relative'>
-			{/* tutaj mozna dodac flagi i synonim albo gdy sa dwa synonimy po angielsku to dodac ikonki i 1 z kilku definicji */}
+		<List spacing={3} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }} bg={'#fdfdfd'} border={'1px solid rgba(66, 153, 225, 0.6)'} borderRadius={{ 'sm':'35px','md': '40px','lg': '50px', 'xl': '60px' }} p={{ 'sm': '10px 40px 10px 20px','md': '15px 50px 15px 30px','lg': '20px 70px 20px 50px', 'xl': '25px 80px 25px 60px' } } zIndex={2} position='relative'>
 			{getResultsToRender()}	
 		</List>
 	);
@@ -109,7 +108,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 						marginRight='15px' 
 						marginTop='20px'
 						marginBottom='20px'
-						boxSize={{ 'xl': '60px' }}
+						boxSize={{ 'sm': '20px' ,'md': '30px','lg': '50px', 'xl': '60px' }}
 					>
 						<Image src={searchIcon} alt='SearchIcon'/>
 					</InputRightElement>
@@ -132,14 +131,12 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 						// borderRadius='2em'
 						// p='0 60px 0 30px'
 						// fontSize='3xl'
-						height={{ 'xl': '100px' }}
-						borderRadius={{ 'xl': '60px' }}
-						p={{ 'xl': '25px 80px 25px 60px' } }
-						fontSize={{ 'xl': '35px' }}
+						height={{ 'sm': '55px','md': '70px','lg': '80px', 'xl': '100px' }}
+						borderRadius={'full'}
+						p={{ 'sm': '10px 40px 10px 20px','md': '15px 50px 15px 30px','lg': '20px 70px 20px 50px', 'xl': '25px 80px 25px 60px' } }
+						fontSize={{ 'sm': '25px', 'md': '25px', 'lg': '30px', 'xl': '35px' }}
 						_placeholder={{
-							'height': { 'xl': '60px' },
 							'fontFamily': 'Ubuntu',
-							'fontSize': { 'xl': '35px' },
 							'fontWeight': 'lighter',
 							'fontStretch': 'normal',
 							'fontStyle': 'normal',
