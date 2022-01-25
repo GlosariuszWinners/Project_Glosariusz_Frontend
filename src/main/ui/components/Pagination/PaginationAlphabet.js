@@ -22,10 +22,10 @@ const PaginationAlphabet = ({ setPaginationLetter, paginationLetter }) => {
 			{polishAlphabet.map(letter => (
 				<Link to="/" key={letter}>
 					<Button
-						bgColor={letter === paginationLetter ? '#f6ae2d' : 'transparent'}
-						color='#fdfdfd'
+						bgColor={letter === paginationLetter ? 'dark-orange' : 'transparent'}
+						color='light-white'
 						width={{ 'sm': '42px', 'xl': '55px' }}
-						_active={{ 'bgColor': '#f6ae2d' }}
+						_active={{ 'bgColor': 'dark-orange' }}
 						_hover={{ 'bgColor': { 'lg': 'rgba(119, 203, 229, 0.5)' } }}
 						_disabled={{ 'cursor': 'not-allowed' }}
 						height={{ 'sm': '45px', 'xl': '32px' }}

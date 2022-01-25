@@ -43,7 +43,16 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 		if(inputValue.length > 2 && !loading && suggestions.length > 0){
 			return(
 				suggestions.slice(0,6).map((suggestion, index) => (
-					<ListItem width={ '100%' } key={index} onClick={() => handleSuggestionClick(suggestion)} p={3} letterSpacing={'0.5px'} borderRadius={'full'} border={'2px solid #f6ae2d'} _hover={{ bg: '#fac564' }} bg={ currentSelect === index ? '#f6ae2d' : '#fdfdfd' } fontFamily={'Ubuntu'} fontWeight={'light'}>
+					<ListItem width={ '100%' }
+						key={index}
+						onClick={() => handleSuggestionClick(suggestion)}
+						p={3}
+						letterSpacing='0.5px'
+						borderRadius='md'
+						_hover={{ 'bg': 'light-orange' }}
+						bg={ currentSelect === index ? 'dark-orange' : 'light-white' }
+						fontFamily='Ubuntu'
+						fontWeight='light'>
 						{suggestion.polishWord}
 					</ListItem>
 				)
@@ -52,7 +61,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 		}
 		if(loading){
 			return(
-				<ListItem p={3} borderBottom={'2px solid #fdfdfd'}>
+				<ListItem p={3} borderBottom={'2px solid light-white'} fontFamily='Ubuntu'>
 					<Spinner/>&nbsp;&nbsp;
 					<span>Ładowanie ...</span>
 				</ListItem>
@@ -60,20 +69,28 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 		}
 		if(error){
 			return(
-				<ListItem p={3} borderBottom={'2px solid #fdfdfd'}>
+				<ListItem p={3} borderBottom={'2px solid light-white'} fontFamily='Ubuntu'>
 						Wystąpił problem, spróbuj ponownie
 				</ListItem>
 			);
 		}
 		return(
-			<ListItem p={3} borderBottom={'2px solid #fdfdfd'}>
+			<ListItem p={3} borderBottom={'2px solid light-white'} fontFamily='Ubuntu'>
 						Brak Wyników
 			</ListItem>
 		);
 	};
 
 	const renderSuggestions = () => (
-		<List spacing={3} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }} bg={'#fdfdfd'} border={'1px solid rgba(66, 153, 225, 0.6)'} borderRadius={{ 'sm':'35px','md': '40px','lg': '50px', 'xl': '60px' }} p={{ 'sm': '10px 40px 10px 20px','md': '15px 50px 15px 30px','lg': '20px 70px 20px 50px', 'xl': '25px 80px 25px 60px' } } zIndex={2} position='relative'>
+		<List
+			spacing={3}
+			width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }}
+			bg='light-white'
+			border={'1px solid rgba(66, 153, 225, 0.6)'}
+			borderRadius={{ 'sm':'35px','md': '40px','lg': '50px', 'xl': '60px' }}
+			p={{ 'sm': '10px 40px 10px 20px','md': '15px 50px 15px 30px','lg': '20px 70px 20px 50px', 'xl': '25px 80px 25px 60px' }}
+			zIndex={2}
+			position='relative'>
 			{getResultsToRender()}	
 		</List>
 	);
@@ -102,7 +119,11 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 	return (
 		<Box>
 			<Center position='relative' zIndex={2}>
-				<InputGroup ref={searchBarRef} className={isOpen ? 'm-menu -active' : 'm-menu '} width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }}  justifySelf='center'>
+				<InputGroup
+					ref={searchBarRef}
+					className={isOpen ? 'm-menu -active' : 'm-menu '}
+					width={{ 'sm': '90vw', 'md': '80vw', 'lg': '70vw', 'xl': '60vw', '2xl': '50vw' }}
+					justifySelf='center'>
 					<InputRightElement
 						pointerEvents='none'
 						marginRight='15px' 
@@ -118,9 +139,9 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 						onKeyPress={handleKeyPressed}
 						onKeyDown={handleKeyDown}
 						onClick={toggle}
-						placeholder={'Wpisz szukane słówko'}
-						bgColor='#fdfdfd'
-						color='#363636'
+						placeholder={'Wpisz szukane słowo'}
+						bgColor='light-white'
+						color='grayish-black'
 						fontFamily='Ubuntu'
 						fontWeight='300'
 						border='none'
@@ -133,7 +154,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 						// fontSize='3xl'
 						height={{ 'sm': '55px','md': '70px','lg': '80px', 'xl': '100px' }}
 						borderRadius={'full'}
-						p={{ 'sm': '10px 40px 10px 20px','md': '15px 50px 15px 30px','lg': '20px 70px 20px 50px', 'xl': '25px 80px 25px 60px' } }
+						p={{ 'sm': '10px 40px 10px 20px','md': '15px 50px 15px 30px','lg': '20px 70px 20px 50px', 'xl': '25px 80px 25px 60px' }}
 						fontSize={{ 'sm': '25px', 'md': '25px', 'lg': '30px', 'xl': '35px' }}
 						_placeholder={{
 							'fontFamily': 'Ubuntu',
@@ -144,7 +165,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 							'letterSpacing': '-0.7px',
 							'textAlign': 'left',
 							'paddingRight': { 'xl': '60px' },
-							'color': '#8a958f',
+							'color': 'light-gray',
 						}}
 					/>
 				</InputGroup>

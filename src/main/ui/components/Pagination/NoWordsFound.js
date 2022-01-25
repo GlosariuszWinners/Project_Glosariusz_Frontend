@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 const NoWordsFound = ({ paginationLetter }) => {
 	return (
-		<Flex bgColor='#fdfdfd' borderRadius='md' justifyContent='center'>
+		<Flex bgColor='light-white' borderRadius='md' justifyContent='center'>
 			<Text as='span'>Brak słówek na literę
-				<Text color='#fdfdfd' backgroundColor='#f6ae2d' as='h2'>
+				<Text color='light-white' backgroundColor='dark-orange' as='h2'>
 					<Center>
 						{paginationLetter.toUpperCase()}
 					</Center>

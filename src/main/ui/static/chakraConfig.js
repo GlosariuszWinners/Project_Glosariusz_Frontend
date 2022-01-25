@@ -7,17 +7,32 @@ const breakpoints = createBreakpoints({
 	xl: '1366px',
 	'2xl': '1920px',
 });
-const styles = {
-	global: {
-		body: {
-			bg: '#d0e8f2'
-		}
+
+
+const colors = {
+	colors: {
+		'light-green': '#d0e8f2',
+		'dark-green': {
+			100: '#77cbe5',
+			200: '#61abc2'
+		},
+		'dark-gray': '#707070',
+		'light-gray': '#8a958f',
+		'grayish-black': '#363636',
+		'light-white': '#fdfdfd',
+		'dark-orange': '#f6ae2d',
+		'light-orange': '#fac564'
 	}
 };
 
-const theme = extendTheme({
-	styles,
-	breakpoints,
-});
+const config = {
+	...colors,
+	breakpoints
+};
+
+console.log(config);
+const theme = extendTheme(config);
+
+console.log(theme);
  
 export default theme;

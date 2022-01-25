@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Center, Button } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { PolishSection, EnglishSection, DefnitionSection } from '../..';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
@@ -20,18 +20,17 @@ const WordDetails = ({ getWordDetails, wordDetails, clearWordDetails, clearWords
 	};
 	return (
 		wordDetails && (
-			<Center marginTop={5} position='relative' zIndex={2}>
-				<Box bgColor='#61abc2' borderRadius='20px' width='100%' marginTop='88px' as='main'>
-					<Link onClick={handleBackToPagination} to='/'>
-						<Button>
+			<Box bgColor='dark-green.200' borderRadius='20px' width='100%' marginTop='80px' as='main' position='relative' zIndex={2}>
+				<Link onClick={handleBackToPagination} to='/'>
+					<Button>
 							Powrót do Listy
-						</Button>
-					</Link>
-					<PolishSection/>
-					<EnglishSection/>
-					<DefnitionSection/>
-				</Box>
-			</Center>)
+					</Button>
+				</Link>
+				<PolishSection/>
+				<EnglishSection/>
+				<DefnitionSection/>
+			</Box>
+		)
 	);
 };
 

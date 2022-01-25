@@ -23,12 +23,12 @@ const EnglishSection = ({ wordDetails }) => {
 					<React.Fragment key={index}>
 
 						<GridItem>
-							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={700} letterSpacing='-0.5px' color='#fdfdfd'>
+							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={700} letterSpacing='-0.5px' color='light-white'>
 								{synonym?.singularForm && synonym.singularForm.toUpperCase()}
 							</Text>
 						</GridItem>
 						<GridItem>
-							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={500} letterSpacing='-0.5px' color='#fdfdfd'>
+							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={500} letterSpacing='-0.5px' color='light-white'>
 								{synonym?.pluralCountable || synonym?.pluralUncountable
 									? `l.mn. ${synonym?.pluralCountable ? synonym.pluralCountable.toUpperCase() : ''} ${synonym?.pluralUncountable ? synonym?.pluralUncountable.toUpperCase() : ''}`
 									: 'l.mn -'} 
