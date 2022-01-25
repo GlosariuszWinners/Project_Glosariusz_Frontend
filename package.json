@@ -15,7 +15,6 @@
     "formik": "^2.2.9",
     "framer-motion": "^5.5.5",
     "lodash": "^4.17.21",
-    "node-sass": "^7.0.1",
     "ra-data-json-server": "^3.19.5",
     "ra-data-simple-rest": "^3.19.5",
     "ra-i18n-polyglot": "^3.19.6",

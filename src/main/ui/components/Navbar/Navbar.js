@@ -1,21 +1,37 @@
 import { Link } from 'react-router-dom';
-import './Navbar.scss';
+import { Box, Flex, Text } from '@chakra-ui/react';
+
+const NavbarData = [
+	{ name: 'O słowniku', link: '/o-slowniku' },
+	{ name: 'Autorzy', link: '/autorzy' },
+	{ name: 'Kontakt', link: '/kontakt' }
+];
 
 const Navbar = () => {
 	return (
-		<nav className='navbar'>
-			<div className='navbar__wrapper'>
-				<div className='navbar__section'>
-					<Link to='/o-slowniku' className='navbar__link'>O słowniku</Link>
-				</div>
-				<div className='navbar__section'>
-					<Link to='/autorzy' className='navbar__link'>Autorzy</Link>
-				</div>
-				<div className='navbar__section'>
-					<Link to='/kontakt' className='navbar__link'>Kontakt</Link>
-				</div>
-			</div>
-		</nav>
+		<Box
+			fontFamily='Ubuntu'
+			height='124px'
+			bgColor='light-green'
+			as='nav'>
+			<Flex height='100%' alignItems='center' justifyContent={{ 'sm': 'center', 'md': 'flex-end' }}>
+				{NavbarData.map(item => (
+					<Box
+						key={item.name}
+						marginRight={{ 'sm': '30px', 'md': '60px' }}
+						_last={{ 'marginRight': { 'sm': '10px', 'md': '30px' } }}>
+						<Text
+							color='light-white'
+							textDecoration='none'
+							fontWeight='700'
+							_hover={{ 'textDecoration': 'underline' }}>
+							<Link to={item.link} className='navbar__link'>{item.name}</Link>
+						</Text>
+					</Box>
+				))}
+				
+			</Flex>
+		</Box>
 	);
 };
 
