@@ -1,4 +1,4 @@
-import { Center, Grid, GridItem, Image, Text } from '@chakra-ui/react';
+import {  Grid, GridItem, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ukFlag from '../../static/uk-flag.svg';
@@ -15,10 +15,8 @@ const EnglishSection = ({ wordDetails }) => {
 			justifyItems={{ 'sm': 'center', 'lg': 'flex-start' }}
 			as='section'
 		>
-			<GridItem>
-				<Center>
-					<Image src={ukFlag}/>
-				</Center>
+			<GridItem height='100%' marginTop='7px'>
+				<Image src={ukFlag}/>
 			</GridItem>
 			<Grid width='100%' display='grid' templateColumns={{ 'sm': '1fr', 'lg': '1fr 1fr' }} gridGap='10px' wordBreak='break-word'>
 				{wordDetails.synonyms && wordDetails.synonyms.map((synonym, index) => (
