@@ -15,7 +15,7 @@ const Logo = ({ shouldFetchWords = true, wordDetailsId, paginationLetter, getWor
 		if(paginationLetter === 'a' && !shouldFetchWords) getWordsByLetter(paginationLetter);
 	};
 	return (
-		<Center display='flex' flexDirection='column' className='Logo Center'>
+		<Center display='flex' flexDirection='column'>
 			<Link onClick={handleLogoClick} to="/">
 				<Text as='h1' fontFamily='Ubuntu' fontSize={{ 'sm': '30px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center" color='white' cursor='pointer'>
 					Polsko - Angielski Słownik Biologiczny
