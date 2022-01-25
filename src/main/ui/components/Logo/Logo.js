@@ -17,7 +17,7 @@ const Logo = ({ shouldFetchWords = true, wordDetailsId, paginationLetter, getWor
 	return (
 		<Center display='flex' flexDirection='column' className='Logo Center'>
 			<Link onClick={handleLogoClick} to="/">
-				<Text as='h1' fontFamily='Ubuntu' fontSize={{ 'sm': '30px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center" color='#fff' cursor='pointer'>
+				<Text as='h1' fontFamily='Ubuntu' fontSize={{ 'sm': '30px', 'md': '30px', 'lg': '40px', 'xl': '60px' }} fontWeight="300" textAlign="center" color='white' cursor='pointer'>
 					Polsko - Angielski Słownik Biologiczny
 				</Text>
 			</Link>
@@ -31,7 +31,8 @@ const Logo = ({ shouldFetchWords = true, wordDetailsId, paginationLetter, getWor
 					{ 	'content': '"a"',
 						'position': 'absolute',
 						'width': { 'sm': '200vw', 'lg': '150vw', 'xl': '130vw' },
-						'bgColor': 'rgba(119, 203, 229, 0.2)',
+						'bgColor': 'dark-green.100',
+						'opacity': '0.2',
 						'left': { 'sm': 'calc(-100vw + 86px)', 'lg': 'calc(-75vw + 86px)', 'xl': 'calc(-65vw + 86px)' },
 						'top': 100,
 						'height': '1200px',
@@ -40,7 +41,7 @@ const Logo = ({ shouldFetchWords = true, wordDetailsId, paginationLetter, getWor
 				}
 			>
 				<Link onClick={handleLogoClick} to="/">
-					<Box height='100%' bgColor='#fdfdfd' borderRadius='50%' position='relative' zIndex={2} cursor='pointer'>
+					<Box height='100%' bgColor='light-white' borderRadius='50%' position='relative' zIndex={2} cursor='pointer'>
 						<Center height='100%'>
 							<Image src={leafLogo}/>
 						</Center>

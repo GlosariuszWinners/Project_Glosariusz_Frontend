@@ -10,7 +10,7 @@ const PolishSections = ({ polishWord }) => {
 				<Image src={polishFlag}/>
 			</GridItem>
 			<GridItem>
-				<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={700} letterSpacing='-0.5px' color='#fdfdfd'>
+				<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={700} letterSpacing='-0.5px' color='light-white'>
 					{polishWord && polishWord.toUpperCase()}
 				</Text>
 			</GridItem>

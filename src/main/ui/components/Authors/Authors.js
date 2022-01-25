@@ -4,7 +4,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 const Authors = () => {
 	return (
 		<Center>
-			<Box as='main' width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '70vw', '2xl': '60vw' }} bgColor='#fff' zIndex={2} fontFamily='Ubuntu' borderRadius='50px'>
+			<Box as='main' width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '70vw', '2xl': '60vw' }} bgColor='light-white' zIndex={2} fontFamily='Ubuntu' borderRadius='50px'>
 				<Center flexDirection='column'>
 					<Text as='h1' textTransform='uppercase' marginTop='15px' fontWeight='700' fontSize='1.3em'>o autorach</Text>
 					<Box paddingLeft='10%' paddingRight='10%'>
