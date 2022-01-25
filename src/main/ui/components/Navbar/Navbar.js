@@ -6,13 +6,13 @@ const Navbar = () => {
 		<nav className='navbar'>
 			<div className='navbar__wrapper'>
 				<div className='navbar__section'>
-					<Link to='/about' className='navbar__link'>O słowniku</Link>
+					<Link to='/o-slowniku' className='navbar__link'>O słowniku</Link>
 				</div>
 				<div className='navbar__section'>
-					<Link to='/about' className='navbar__link'>Autorzy</Link>
+					<Link to='/autorzy' className='navbar__link'>Autorzy</Link>
 				</div>
 				<div className='navbar__section'>
-					<Link to='/about' className='navbar__link'>Kontakt</Link>
+					<Link to='/kontakt' className='navbar__link'>Kontakt</Link>
 				</div>
 			</div>
 		</nav>
