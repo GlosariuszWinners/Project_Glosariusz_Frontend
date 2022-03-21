@@ -2,7 +2,7 @@
 
 const authProvider = {
 	login: async ({ username, password }) => {
-		const request = new Request('http://localhost:8080/api/auth/login', {
+		const request = new Request(`${process.env.REACT_APP_API_URL}/auth/login`, {
 			method: 'POST',
 			body: JSON.stringify({ login: username, password }),
 			credentials: 'include',
@@ -28,7 +28,7 @@ const authProvider = {
 		return Promise.resolve();
 	},
 	logout: async () => {
-		const request = new Request('http://localhost:8080/api/auth/logout', {
+		const request = new Request(`${process.env.REACT_APP_API_URL}/auth/logout`, {
 			method: 'GET',
 			credentials: 'include',
 		});
