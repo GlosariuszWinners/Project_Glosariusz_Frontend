@@ -25,7 +25,7 @@ const Navbar = () => {
 							textDecoration='none'
 							fontWeight='700'
 							_hover={{ 'textDecoration': 'underline' }}>
-							<Link to={item.link} className='navbar__link'>{item.name}</Link>
+							<Link to={item.link}>{item.name}</Link>
 						</Text>
 					</Box>
 				))}

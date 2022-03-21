@@ -11,12 +11,13 @@ const UtilsLoading = ({ loading }) => {
 	);
 };
 
-UtilsLoading.propTypes = {
-	loading: PropTypes.bool
-};
 
 const mapStateToProps = (state) => ({
 	loading: state.words.loading
 });
+
+UtilsLoading.propTypes = {
+	loading: PropTypes.bool
+};
 
 export default connect(mapStateToProps, null)(UtilsLoading);

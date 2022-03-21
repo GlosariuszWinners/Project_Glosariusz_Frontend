@@ -12,7 +12,7 @@ const PaginationAlphabet = ({ setPaginationLetter, paginationLetter }) => {
 	return (
 		<Box display={{ 'sm': 'block', 'xl': 'flex' }}
 			justifyContent={{ 'sm': 'center' }}
-			overflow={{ 'sm': 'auto', 'xl': 'visible' }}
+			overflowX={{ 'sm': 'auto', 'xl': 'visible' }}
 			whiteSpace={{ 'sm': 'nowrap' }}
 			flexWrap={{ 'xl': 'wrap' }}
 			marginTop='59px'

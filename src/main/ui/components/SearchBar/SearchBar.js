@@ -44,7 +44,7 @@ const SearchBar = ({ loading, error, getSuggestions, setWordDetails, clearSugges
 			return(
 				suggestions.slice(0,6).map((suggestion, index) => (
 					<ListItem width={ '100%' }
-						key={index}
+						key={suggestion._id}
 						onClick={() => handleSuggestionClick(suggestion)}
 						p={3}
 						letterSpacing='0.5px'

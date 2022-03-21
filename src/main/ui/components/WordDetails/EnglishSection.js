@@ -18,9 +18,10 @@ const EnglishSection = ({ wordDetails }) => {
 			<GridItem height='100%' marginTop='10px'>
 				<Image src={ukFlag}/>
 			</GridItem>
-			<Grid width='100%' display='grid' templateColumns={{ 'sm': '1fr', 'lg': '1fr 1fr' }} gridGap='10px' wordBreak='break-word'>
-				{wordDetails.synonyms && wordDetails.synonyms.map((synonym, index) => (
-					<React.Fragment key={index}>
+			<Grid width='100%' display='grid' templateColumns={{ 'sm': '1fr', 'lg': '1fr 1fr' }}
+				gridGap='10px' wordBreak='break-word'>
+				{wordDetails.synonyms && wordDetails.synonyms.map((synonym) => (
+					<React.Fragment key={synonym._id}>
 
 						<GridItem>
 							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={700} letterSpacing='-0.5px' color='light-white'>
