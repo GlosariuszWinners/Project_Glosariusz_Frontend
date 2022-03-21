@@ -5,7 +5,7 @@ import panelDataProvider from './words/utils/dataProvider';
 import polishMessages from 'ra-language-polish';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 
-const dataProvider = panelDataProvider('http://localhost:8080/api');
+const dataProvider = panelDataProvider(process.env.REACT_APP_API_URL);
 
 const i18nProvider = polyglotI18nProvider(() => polishMessages, 'pl');
 
