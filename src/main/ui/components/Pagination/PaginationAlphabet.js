@@ -1,14 +1,25 @@
 import { Box, Button } from '@chakra-ui/react';
-import { polishAlphabet } from './utils/alphabet';
+import { getPolishAlphabet } from './utils/alphabet';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { wordsService } from '../../../ducks/words/operations';
+import { useEffect, useState } from 'react';
 
 const PaginationAlphabet = ({ setPaginationLetter, paginationLetter }) => {
 	const handleChangePaginationLetter = (letter) => {
 		setPaginationLetter(letter);
 	};
+	
+	const [alphabet, setAlphabet] = useState();
+	console.log(alphabet);
+	useEffect(() => {
+		const getAlphabet = async () => {
+			const data = await getPolishAlphabet();
+			setAlphabet(data);
+		};
+		getAlphabet();
+	}, []);
 	return (
 		<Box display={{ 'sm': 'block', 'xl': 'flex' }}
 			justifyContent={{ 'sm': 'center' }}
@@ -19,7 +30,7 @@ const PaginationAlphabet = ({ setPaginationLetter, paginationLetter }) => {
 			marginBottom={5}
 			as='section'
 		>
-			{polishAlphabet.map(letter => (
+			{alphabet && alphabet.map(letter => (
 				<Link to="/" key={letter}>
 					<Button
 						bgColor={letter === paginationLetter ? 'dark-orange' : 'transparent'}

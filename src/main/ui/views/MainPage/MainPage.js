@@ -1,8 +1,12 @@
 import { Logo, SearchBar, Navbar } from '../..';
 import { Box } from '@chakra-ui/react';
 import { Pagination, ProviderWrapper } from '../..';
+import { useEffect } from 'react';
 
 const MainPage = () => {
+	useEffect(() => {
+		document.title = 'Słownik glosariusz';
+	}, []);
 	return (
 		<ProviderWrapper>
 			<Navbar/>

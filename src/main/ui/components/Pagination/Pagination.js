@@ -4,13 +4,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { UtilsSection } from '../../';
 import { PaginationAlphabet, NoWordsFound, ApiError, WordsSection } from '../../';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { wordsService } from '../../../ducks/words/operations';
 
-const Pagination = ({ words, loading, error, nextPaginationUrl, getWordsByLetter, getWordsByUrl, paginationLetter, clearWords }) => {
-	const handleLoadMore = () => {
-		getWordsByUrl(nextPaginationUrl);
-	};
+const Pagination = ({ words, loading, error, getWordsByLetter, paginationLetter, clearWords }) => {
+
 
 	useEffect(() => {
 		clearWords();
@@ -18,27 +15,22 @@ const Pagination = ({ words, loading, error, nextPaginationUrl, getWordsByLetter
 	}, [paginationLetter]);
 
 	return(
-		<InfiniteScroll
-			dataLength={words.length}
-			next={handleLoadMore}
-			hasMore={nextPaginationUrl}
-		>
-			<Flex flexDirection='column' alignItems='center' bgColor='light-green'>
-				<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '70vw', '2xl': '60vw' }} zIndex={2}>
-					<PaginationAlphabet/>
-					{!loading && !error && words.length === 0 &&
+		<Flex flexDirection='column' alignItems='center' bgColor='light-green'>
+			<Box width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '70vw', '2xl': '60vw' }} zIndex={2}>
+				<PaginationAlphabet/>
+				{!loading && !error && words.length === 0 &&
 					<NoWordsFound/>
-					}
-					{error &&
+				}
+				{error &&
 					<ApiError/>
-					}
-					{words.length > 0 &&
+				}
+				{words.length > 0 &&
 					<WordsSection/>
-					}
-					<UtilsSection/>
-				</Box>
-			</Flex>
-		</InfiniteScroll>
+				}
+				<UtilsSection/>
+			</Box>
+			
+		</Flex>
 	);
 };
 

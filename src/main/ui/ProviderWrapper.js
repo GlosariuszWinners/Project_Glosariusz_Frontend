@@ -1,12 +1,11 @@
 import { applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger';
 import reducers from '../ducks/index';
 import thunk from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
 import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
-const store = createStore(reducers, applyMiddleware(apiMiddleware, thunk, logger));
+const store = createStore(reducers, applyMiddleware(apiMiddleware, thunk));
 
 const ProviderWrapper = ({ children }) => {
 	return (
