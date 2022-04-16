@@ -15,6 +15,10 @@ const WordDetails = ({ getWordDetails, wordDetails, clearWordDetails, clearWords
 		if(!wordDetails?.id) getWordDetails(id);
 	}, []);
 
+	useEffect(() => {
+		document.title = wordDetails.polishWord ? wordDetails.polishWord.charAt(0).toUpperCase() + wordDetails.polishWord.slice(1) : 'Słownik glosariusz';
+	}, [wordDetails]);
+
 	const handleBackToPagination = () => {
 		clearWordDetails();
 		clearWords();

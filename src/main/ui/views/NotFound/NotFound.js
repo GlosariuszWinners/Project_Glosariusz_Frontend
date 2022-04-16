@@ -1,7 +1,12 @@
 import { Box, Heading, Text, Button, Image, Center } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ShrekIMG from '../../static/shrek_confused.jpeg';
+
 const NotFound = () => {
+	useEffect(() => {
+		document.title = 'Nie znaleziono';
+	}, []);
 	return (
 		<Box textAlign='center' py={10} px={6}>
 			<Heading

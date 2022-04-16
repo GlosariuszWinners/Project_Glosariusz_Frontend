@@ -1,12 +1,11 @@
-import { Box, Center, Link, ListItem, Text, UnorderedList } from '@chakra-ui/react';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { Box, Center, ListItem, Text, UnorderedList } from '@chakra-ui/react';
 
 const Authors = () => {
 	return (
 		<Center>
-			<Box as='main' width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '70vw', '2xl': '60vw' }} bgColor='light-white' zIndex={2} fontFamily='Ubuntu' borderRadius='50px'>
+			<Box as='main' width={{ 'sm': '93vw', 'lg': '78vw', 'xl': '70vw', '2xl': '60vw' }} bgColor='light-white' zIndex={2} fontFamily='Ubuntu' borderRadius='50px' paddingBottom='15px'>
 				<Center flexDirection='column'>
-					<Text as='h1' textTransform='uppercase' marginTop='15px' fontWeight='700' fontSize='1.3em'>o autorach</Text>
+					<Text as='h1' textTransform='uppercase' marginTop='15px' fontWeight='700' fontSize='1.3em'>autorzy</Text>
 					<Box paddingLeft='10%' paddingRight='10%'>
 						<Text as='p' marginTop='25px'>
                             Polsko-angielski słownik terminów biologicznych, pierwszy tego typu słownik w Polsce, został przygotowany przez następujących studentów Genetyki i Biologii Eksperymentalnej z Wydziału Biologii Uniwersytetu Gdańskiego:
@@ -56,9 +55,6 @@ const Authors = () => {
                             Za opracowanie interfejsu odpowiedzialna jest <span style={{ 'fontWeight': '600' }}>Joanna Jaworska</span>, studentka studiów magisterskich z Wydziału Nauk Społecznych Uniwersytetu Gdańskiego.
 						</Text>
 					</Box>
-					<Center margin='25px'>
-						<Link href='https://forms.gle/ZFwLMs7FxL1RBT9A8' target='blank' fontWeight='700'>Zgłoś błąd / zaproponuj nowy termin</Link> <ExternalLinkIcon mx='2px' />
-					</Center>
 				</Center>
 			</Box>
 		</Center>
