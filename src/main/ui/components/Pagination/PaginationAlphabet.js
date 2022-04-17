@@ -12,7 +12,6 @@ const PaginationAlphabet = ({ setPaginationLetter, paginationLetter }) => {
 	};
 	
 	const [alphabet, setAlphabet] = useState();
-	console.log(alphabet);
 	useEffect(() => {
 		const getAlphabet = async () => {
 			const data = await getPolishAlphabet();

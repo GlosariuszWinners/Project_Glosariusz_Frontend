@@ -22,7 +22,6 @@ const EnglishSection = ({ wordDetails }) => {
 				gridGap='10px' wordBreak='break-word'>
 				{wordDetails.synonyms && wordDetails.synonyms.map((synonym) => (
 					<React.Fragment key={synonym._id}>
-
 						<GridItem>
 							<Text fontFamily='Ubuntu' fontSize='25px' fontWeight={700} letterSpacing='-0.5px' color='light-white'>
 								{synonym?.singularForm && synonym.singularForm.toUpperCase()}
