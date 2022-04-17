@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import { ArrayInput, BooleanInput, Create, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin';
 import validators from './utils/validators';
 
 const WordCreate = (props) => {
+	useEffect(() => {
+		document.title = 'Dodawanie słowa';
+	}, []);
 	return (
 		<Create {...props} title='Dodaj słowo do słownika'>
 			<SimpleForm>
@@ -9,8 +13,7 @@ const WordCreate = (props) => {
 				<ArrayInput source='synonyms' label='Angielskie tłumaczenia'>
 					<SimpleFormIterator>
 						<TextInput source='singularForm' label='Forma pojedyncza' validate={validators.validateSynonym}/>
-						<TextInput source='pluralCountable' label='Forma mnoga policzalna' validate={validators.validateSynonym}/>
-						<TextInput source='pluralUncountable' label='Forma mnoga niepoliczalna' validate={validators.validateSynonym}/>
+						<TextInput source='pluralForm' label='Forma mnoga' validate={validators.validateSynonym}/>
 					</SimpleFormIterator>
 				</ArrayInput>
 				<TextInput source='definition' label='Definicja' multiline={true} validate={validators.validateDefinition}/>
