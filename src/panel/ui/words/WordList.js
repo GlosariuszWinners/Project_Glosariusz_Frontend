@@ -21,7 +21,6 @@ const WordList = (props) => {
 						<TextField source='pluralForm' label='Forma mnoga'/>
 					</Datagrid>
 				</ArrayField>
-				<TextField source='definition' label='Definicja'/>
 				<WordEditButton/>
 				<WordDeleteButton/>
 			</Datagrid>

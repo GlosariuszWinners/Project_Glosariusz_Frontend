@@ -9,9 +9,11 @@ ReactDOM.render(
 	<React.StrictMode>
 		<ChakraProvider>
 			<ThemeProvider theme={theme}>
-				<Router>
-					<App />
-				</Router>
+				<React.Suspense fallback={<p>Loading..</p>}>
+					<Router>
+						<App />
+					</Router>
+				</React.Suspense>
 			</ThemeProvider>
 		</ChakraProvider>
 	</React.StrictMode>,
