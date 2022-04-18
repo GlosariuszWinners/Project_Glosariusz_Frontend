@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { wordsService } from '../../../ducks/words/operations';
 import leafLogo from '../../static/leaf.svg';
 import { wordDetailsService } from './../../../ducks/wordDetails/operations';
-// import { useHistory } from 'react-router';
 
 const Logo = ({ shouldFetchWords = true, wordDetailsId, paginationLetter, getWordsByLetter, clearWordDetails, clearWords }) => {
 	const handleLogoClick = () => {

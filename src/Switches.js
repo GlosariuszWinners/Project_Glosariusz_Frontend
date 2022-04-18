@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
+import { NotFound,  MainPage, DetailPage, AboutPage, AuthorsPage, ContactPage } from '../src/main/ui';
+import React from 'react';
 import { Main } from '../src/panel/ui';
-import { NotFound, MainPage, DetailPage, AboutPage, AuthorsPage, ContactPage } from '../src/main/ui';
 
 const Switches = () => {
 	return (

@@ -1,6 +1,5 @@
 import { stringify } from 'query-string';
 import { fetchUtils } from 'ra-core';
-// import inMemoryJWTManager from './inMemoryJwt';
 
 export default (apiUrl) => {
 	const httpClient = (url, method, params) => {

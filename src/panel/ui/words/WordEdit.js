@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrayInput, BooleanInput, Edit, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin';
+import { ArrayInput, Edit, SimpleForm, SimpleFormIterator, TextInput } from 'react-admin';
 import validators from './utils/validators';
 
 const WordEdit = (props) => {
@@ -20,7 +20,6 @@ const WordEdit = (props) => {
 					</SimpleFormIterator>
 				</ArrayInput>
 				<TextInput source='definition' label='Definicja' multiline={true} validate={validators.validateDefinition}/>
-				<BooleanInput source='reference' label='Referencja'/>
 			</SimpleForm>
 		</Edit>
 	);
